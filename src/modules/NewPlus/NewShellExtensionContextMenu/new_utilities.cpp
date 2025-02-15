@@ -11,3 +11,19 @@ void newplus::utilities::set_saved_number_of_templates(size_t templates)
 {
     saved_number_of_templates = templates;
 }
+
+POINT mouse_position_at_context_menu_right_click = { 0 };
+POINT newplus::utilities::get_mouse_position_at_context_menu_right_click()
+{
+    return mouse_position_at_context_menu_right_click;
+}
+
+void newplus::utilities::set_mouse_position_at_context_menu_right_click_to_current_position()
+{
+    GetCursorPos(&mouse_position_at_context_menu_right_click);
+}
+
+void newplus::utilities::set_mouse_position(const POINT& mouse_location)
+{
+    mouse_position_at_context_menu_right_click = mouse_location;
+}

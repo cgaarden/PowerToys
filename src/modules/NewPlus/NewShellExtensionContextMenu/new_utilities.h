@@ -20,6 +20,10 @@ namespace newplus::utilities
     size_t get_saved_number_of_templates();
     void set_saved_number_of_templates(size_t templates);
 
+    POINT get_mouse_position_at_context_menu_right_click();
+    void set_mouse_position_at_context_menu_right_click_to_current_position();
+    void set_mouse_position(const POINT& mouse_location);
+
     inline std::wstring get_explorer_icon(std::filesystem::path path)
     {
         SHFILEINFO shell_file_info = { 0 };
@@ -300,12 +304,13 @@ namespace newplus::utilities
                     // Newly created object is on the desktop -- reposition under mouse and enter rename mode
                     LPCITEMIDLIST shell_item_to_select_and_position[] = { shell_item_ids };
                     POINT mouse_position;
-                    GetCursorPos(&mouse_position);
-                    mouse_position.x -= GetSystemMetrics(SM_CXMENUSIZE);
-                    mouse_position.x = max(mouse_position.x, 20);
-                    mouse_position.y -= GetSystemMetrics(SM_CXMENUSIZE)/2;
-                    mouse_position.y = max(mouse_position.y, 20);
-                        POINT position[] = { mouse_position };
+                    //GetCursorPos(&mouse_position);
+                    mouse_position = get_mouse_position_at_context_menu_right_click();
+                    //mouse_position.x -= GetSystemMetrics(SM_CXMENUSIZE);
+                    //mouse_position.x = max(mouse_position.x, 20);
+                    //mouse_position.y -= GetSystemMetrics(SM_CXMENUSIZE)/2;
+                    //mouse_position.y = max(mouse_position.y, 20);
+                    POINT position[] = { mouse_position };
                     folder_view->SelectAndPositionItems(1, shell_item_to_select_and_position, position, common_select_flags | SVSI_POSITIONITEM);
                 }
                 else

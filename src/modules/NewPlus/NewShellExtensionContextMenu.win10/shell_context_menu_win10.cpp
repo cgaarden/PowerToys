@@ -268,6 +268,10 @@ IFACEMETHODIMP shell_context_menu_win10::GetCommandString(UINT_PTR, UINT, UINT*,
 #pragma region IObjectWithSite
 IFACEMETHODIMP shell_context_menu_win10::SetSite(_In_ IUnknown* site) noexcept
 {
+    // Store the current mouse location so in case we are on the desktop
+    // we can later reposition the newly created template at this location
+    newplus::utilities::set_mouse_position_at_context_menu_right_click_to_current_position();
+
     this->site_of_folder = site;
 
     return S_OK;

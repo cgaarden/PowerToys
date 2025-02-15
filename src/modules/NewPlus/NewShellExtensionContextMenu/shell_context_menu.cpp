@@ -58,7 +58,30 @@ IFACEMETHODIMP shell_context_menu::GetState(_In_opt_ IShellItemArray*, _In_ BOOL
 
 IFACEMETHODIMP shell_context_menu::Invoke(_In_opt_ IShellItemArray*, _In_opt_ IBindCtx*) noexcept
 {
-    return E_NOTIMPL;
+    // Store the current mouse location so in case we are on the desktop
+    // we can later reposition the newly created template at this location
+    //newplus::utilities::set_mouse_position_at_context_menu_right_click_to_current_position();
+
+    MessageBox(NULL, L"test", L"test", MB_OK);
+
+    POINT pt;
+    if (GetCursorPos(&pt))
+    {
+        std::wstringstream message1;
+        message1 << L"Mouse Position first: (" << pt.x << L", " << pt.y << L")";
+
+        HWND hwnd = GetForegroundWindow();
+        ScreenToClient(hwnd, &pt);
+
+        std::wstringstream message2;
+        message2 << L"Mouse Position second: (" << pt.x << L", " << pt.y << L")";
+
+        newplus::utilities::set_mouse_position(pt);
+
+        MessageBox(NULL, message1.str().c_str(), message2.str().c_str(), MB_OK);
+    }
+
+    return S_OK;
 }
 
 IFACEMETHODIMP shell_context_menu::GetFlags(_Out_ EXPCMDFLAGS* returned_menu_item_flags)
