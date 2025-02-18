@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="powertoys_module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dll_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tag_context_main_menu_item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tag_context_sub_menu_collection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tag_context_sub_menu_item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="trace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.base.h" />
+    <ClInclude Include="Generated Files/resource.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dll_main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tag_context_main_menu_item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tag_context_sub_menu_collection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tag_context_sub_menu_item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="resources.base.rc" />
+    <None Include="resources.resx" />
+    <None Include="dll.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AppxManifest.xml">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\FileOrganizer_light.ico">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\LargeTile.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\SmallTile.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\SplashScreen.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\Square44x44Logo.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\Square150x150Logo.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\StoreLogo.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\Wide310x150Logo.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_light.ico">
+      <Filter>Asset Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{db958275-b205-4b43-93dc-f54445e855c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Asset Files">
+      <UniqueIdentifier>{a1490891-feae-49b4-a4d9-e09cebacdbb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{dd38225d-1b3d-44fd-bb50-4c0318d8ebdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8e8c7037-19a7-485c-babe-51ae425d591b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Generated Files\resources.rc">
+      <Filter>Generated Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

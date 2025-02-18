@@ -3,6 +3,7 @@
 
 #include "trace.h"
 #include "Generated Files/resource.h"
+#include "utilities.h"
 
 using namespace Microsoft::WRL;
 
@@ -27,8 +28,8 @@ IFACEMETHODIMP rate_context_sub_menu_item::GetTitle(_In_opt_ IShellItemArray* it
 IFACEMETHODIMP rate_context_sub_menu_item::GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon)
 {
     *returned_icon = nullptr;
-    return E_NOTIMPL;
-    //return SHStrDup(this->template_entry->get_explorer_icon().c_str(), icon);
+    static const auto icon_resource_filepath = file_organizer::utilities::get_rate_icon_resource_filepath(module_instance_handle, ThemeHelpers::GetAppTheme());
+    return SHStrDup(icon_resource_filepath.c_str(), returned_icon);
 }
 
 IFACEMETHODIMP rate_context_sub_menu_item::GetToolTip(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_info_tip)

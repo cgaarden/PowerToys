@@ -3,12 +3,11 @@
 #include "dll_main.h"
 #include "trace.h"
 #include "rate_context_main_menu_item.h"
-#include "tag_context_main_menu_item.h"
 
 #include <common/Telemetry/EtwTrace/EtwTrace.h>
 
 HMODULE module_instance_handle = 0;
-Shared::Trace::ETWTrace trace(L"FileOrganizerShellExtension");
+Shared::Trace::ETWTrace trace(L"FileOrganizerRateShellExtension");
 
 BOOL APIENTRY DllMain(HMODULE module_handle, DWORD ul_reason_for_call, LPVOID reserved)
 {
@@ -46,4 +45,3 @@ STDAPI DllGetClassObject(_In_ REFCLSID rclsid, _In_ REFIID riid, _Outptr_ LPVOID
 }
 
 CoCreatableClass(rate_context_main_menu_item)
-CoCreatableClass(tag_context_main_menu_item)

@@ -118,16 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="product_name" xml:space="preserve">
-    <value>File Organizer</value>
+    <value>File Organizer - Rate</value>
     <comment>The File Organizer product name</comment>
-  </data>
-  <data name="context_menu_item_tag" xml:space="preserve">
-    <value>Tag</value>
-    <comment>The 'Tag' context menu item that users click on. This should be localized to match tag in Windows.</comment>
-  </data>
-  <data name="context_menu_item_tag_manage" xml:space="preserve">
-    <value>Tag</value>
-    <comment>The 'Manage tags' context submenu item that users click on.</comment>
   </data>
   <data name="context_menu_item_rate" xml:space="preserve">
     <value>Rate</value>

@@ -26,13 +26,4 @@ namespace file_organizer::utilities
 
         return icon_resource_path;
     }
-
-    std::wstring get_tag_icon_resource_filepath(const HMODULE module_instance_handle, const Theme theme)
-    {
-        auto icon_resource_path = get_module_folderpath(module_instance_handle);
-
-        icon_resource_path += constants::non_localizable::tag_menu_icon_light_resource_relative_path;
-
-        return icon_resource_path;
-    }
 }

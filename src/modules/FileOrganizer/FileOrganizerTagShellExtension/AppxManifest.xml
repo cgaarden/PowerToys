@@ -9,11 +9,11 @@
   xmlns:desktop5="http://schemas.microsoft.com/appx/manifest/desktop/windows10/5"
   xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
   xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10" IgnorableNamespaces="uap uap2 uap3 rescap desktop desktop4 desktop5 uap10 com">
-	<Identity Name="Microsoft.PowerToys.FileOrganizerContextMenu" ProcessorArchitecture="neutral" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="2.0.0.1" />
+	<Identity Name="Microsoft.PowerToys.FileOrganizer.Tag.ContextMenu" ProcessorArchitecture="neutral" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.0.0.0" />
 	<Properties>
-		<DisplayName>PowerToys File Organizer</DisplayName>
+		<DisplayName>PowerToys File Organizer - Tag</DisplayName>
 		<PublisherDisplayName>Microsoft</PublisherDisplayName>
-		<Logo>Assets\FileOrganizer\StoreLogo.png</Logo>
+		<Logo>Assets\FileOrganizer.Tag\StoreLogo.png</Logo>
 		<uap10:AllowExternalContent>true</uap10:AllowExternalContent>
 	</Properties>
 	<Resources>
@@ -27,35 +27,28 @@
 		<rescap:Capability Name="unvirtualizedResources"/>
 	</Capabilities>
 	<Applications>
-		<Application Id="Microsoft.PowerToys.FileOrganizerContextMenu" Executable="NonExistent.exe" uap10:TrustLevel="mediumIL" uap10:RuntimeBehavior="win32App">
-			<uap:VisualElements AppListEntry="none" DisplayName="PowerToys File Organizer" Description="File Organizer File Explorer Context Menus" BackgroundColor="transparent" Square150x150Logo="Assets\FileOrganizer\Square150x150Logo.png" Square44x44Logo="Assets\FileOrganizer\Square44x44Logo.png">
-				<uap:DefaultTile Wide310x150Logo="Assets\FileOrganizer\Wide310x150Logo.png" Square310x310Logo="Assets\FileOrganizer\LargeTile.png" Square71x71Logo="Assets\FileOrganizer\SmallTile.png"></uap:DefaultTile>
-				<uap:SplashScreen Image="Assets\FileOrganizer\SplashScreen.png" />
+		<Application Id="Microsoft.PowerToys.FileOrganizer.Tag.ContextMenu" Executable="NonExistent.exe" uap10:TrustLevel="mediumIL" uap10:RuntimeBehavior="win32App">
+			<uap:VisualElements AppListEntry="none" DisplayName="PowerToys File Organizer - Tag" Description="File Organizer File Explorer Context Menus" BackgroundColor="transparent" Square150x150Logo="Assets\FileOrganizer.Tag\Square150x150Logo.png" Square44x44Logo="Assets\FileOrganizer.Tag\Square44x44Logo.png">
+				<uap:DefaultTile Wide310x150Logo="Assets\FileOrganizer.Tag\Wide310x150Logo.png" Square310x310Logo="Assets\FileOrganizer.Tag\LargeTile.png" Square71x71Logo="Assets\FileOrganizer.Tag\SmallTile.png"></uap:DefaultTile>
+				<uap:SplashScreen Image="Assets\FileOrganizer.Tag\SplashScreen.png" />
 			</uap:VisualElements>
 			<Extensions>
 				<desktop4:Extension Category="windows.fileExplorerContextMenus">
 					<desktop4:FileExplorerContextMenus>
+                  <desktop5:ItemType Type="Directory">
+                     <desktop5:Verb Id="TagCommand" Clsid="A2877438-9A16-4629-912A-1223B4E3B025" />
+                  </desktop5:ItemType>
                   <desktop5:ItemType Type="*">
                      <desktop5:Verb Id="TagCommand" Clsid="A2877438-9A16-4629-912A-1223B4E3B025" />
                   </desktop5:ItemType>
                </desktop4:FileExplorerContextMenus>
             </desktop4:Extension>
-            <desktop4:Extension Category="windows.fileExplorerContextMenus">
-               <desktop4:FileExplorerContextMenus>
-		            <desktop5:ItemType Type="*">
-                     <desktop5:Verb Id="RateCommand" Clsid="DF9672B2-B7C8-49F8-AE48-054B361C1448" />
-                  </desktop5:ItemType>
-               </desktop4:FileExplorerContextMenus>
-				</desktop4:Extension>
 				<com:Extension Category="windows.comServer" uap10:RuntimeBehavior="packagedClassicApp">
 					<com:ComServer>
                   <com:SurrogateServer DisplayName="Tag context menu verb handler">
-                     <com:Class Id="A2877438-9A16-4629-912A-1223B4E3B025"	Path="PowerToys.FileOrganizer.ShellExtension.dll" ThreadingModel="STA"/>
+                     <com:Class Id="A2877438-9A16-4629-912A-1223B4E3B025"	Path="PowerToys.FileOrganizer.Tag.ShellExtension.dll" ThreadingModel="STA"/>
                   </com:SurrogateServer>
-                  <com:SurrogateServer DisplayName="Rate context menu verb handler">
-                     <com:Class Id="DF9672B2-B7C8-49F8-AE48-054B361C1448" Path="PowerToys.FileOrganizer.ShellExtension.dll" ThreadingModel="STA"/>
-                  </com:SurrogateServer>
-               </com:ComServer>
+					</com:ComServer>
 				</com:Extension>
 			</Extensions>
 		</Application>

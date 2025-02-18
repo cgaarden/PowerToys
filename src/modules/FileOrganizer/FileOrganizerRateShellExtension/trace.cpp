@@ -15,7 +15,7 @@ void Trace::EventToggleOnOff(_In_ const bool enabled) noexcept
 {
     TraceLoggingWriteWrapper(
         g_hProvider,
-        "FileOrganizer_EventToggleOnOff",
+        "FileOrganizer_Rate_EventToggleOnOff",
         ProjectTelemetryPrivacyDataTag(ProjectTelemetryTag_ProductAndServicePerformance),
         TraceLoggingKeyword(PROJECT_KEYWORD_MEASURE),
         TraceLoggingBoolean(enabled, "Enabled"));

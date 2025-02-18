@@ -27,7 +27,7 @@ public:
     virtual const wchar_t* get_name() override
     {
         static const std::wstring localized_product_name =
-            GET_RESOURCE_STRING_FALLBACK(IDS_PRODUCT_NAME, L"File Organizer");
+            GET_RESOURCE_STRING_FALLBACK(IDS_PRODUCT_NAME, L"File Organizer - Rate");
 
         return localized_product_name.c_str();
     }

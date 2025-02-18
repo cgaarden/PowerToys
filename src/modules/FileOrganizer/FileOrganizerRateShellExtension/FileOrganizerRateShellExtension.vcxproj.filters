@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="trace.cpp" />
-    <ClCompile Include="pch.cpp" />
     <ClCompile Include="powertoys_module.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -12,30 +10,26 @@
     <ClCompile Include="dll_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tag_context_main_menu_item.cpp">
-      <Filter>Source Files\Tag</Filter>
-    </ClCompile>
-    <ClCompile Include="tag_context_sub_menu_collection.cpp">
-      <Filter>Source Files\Tag</Filter>
-    </ClCompile>
-    <ClCompile Include="tag_context_sub_menu_item.cpp">
-      <Filter>Source Files\Tag</Filter>
+    <ClCompile Include="utilities.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="rate_context_main_menu_item.cpp">
-      <Filter>Source Files\Rate</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="rate_context_sub_menu_collection.cpp">
-      <Filter>Source Files\Rate</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="rate_context_sub_menu_item.cpp">
-      <Filter>Source Files\Rate</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="utilities.cpp">
+    <ClCompile Include="trace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="trace.h" />
     <ClInclude Include="resource.base.h" />
     <ClInclude Include="Generated Files/resource.h">
       <Filter>Generated Files</Filter>
@@ -52,66 +46,57 @@
     <ClInclude Include="settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tag_context_main_menu_item.h">
-      <Filter>Header Files\Tag</Filter>
-    </ClInclude>
-    <ClInclude Include="tag_context_sub_menu_collection.h">
-      <Filter>Header Files\Tag</Filter>
-    </ClInclude>
-    <ClInclude Include="tag_context_sub_menu_item.h">
-      <Filter>Header Files\Tag</Filter>
+    <ClInclude Include="utilities.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rate_context_main_menu_item.h">
-      <Filter>Header Files\Rate</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rate_context_sub_menu_collection.h">
-      <Filter>Header Files\Rate</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rate_context_sub_menu_item.h">
-      <Filter>Header Files\Rate</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utilities.h">
+    <ClInclude Include="trace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="file_organizer.base.rc" />
+    <None Include="resources.base.rc" />
     <None Include="resources.resx" />
-    <None Include="Assets\FileOrganizer\SmallTile.png">
-      <Filter>Asset Files</Filter>
-    </None>
-    <None Include="Assets\FileOrganizer\SplashScreen.png">
-      <Filter>Asset Files</Filter>
-    </None>
-    <None Include="Assets\FileOrganizer\Square44x44Logo.png">
-      <Filter>Asset Files</Filter>
-    </None>
-    <None Include="Assets\FileOrganizer\Square150x150Logo.png">
-      <Filter>Asset Files</Filter>
-    </None>
-    <None Include="Assets\FileOrganizer\StoreLogo.png">
-      <Filter>Asset Files</Filter>
-    </None>
-    <None Include="Assets\FileOrganizer\Wide310x150Logo.png">
-      <Filter>Asset Files</Filter>
-    </None>
-    <None Include="Assets\FileOrganizer\FileOrganizer_light.ico">
-      <Filter>Asset Files</Filter>
-    </None>
-    <None Include="Assets\FileOrganizer\LargeTile.png">
-      <Filter>Asset Files</Filter>
-    </None>
     <None Include="dll.def">
       <Filter>Source Files</Filter>
     </None>
     <None Include="AppxManifest.xml">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer\rate_light.ico">
+    <None Include="Assets\FileOrganizer.Rate\Wide310x150Logo.png">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer\tag_light.ico">
+    <None Include="Assets\FileOrganizer.Rate\SmallTile.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\SplashScreen.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\Square44x44Logo.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\Square150x150Logo.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\StoreLogo.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\FileOrganizer_light.ico">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\LargeTile.png">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\rate_light.ico">
       <Filter>Asset Files</Filter>
     </None>
   </ItemGroup>
@@ -128,21 +113,9 @@
     <Filter Include="Header Files">
       <UniqueIdentifier>{8e8c7037-19a7-485c-babe-51ae425d591b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Tag">
-      <UniqueIdentifier>{5a09ca48-0496-45a1-b6cd-cf423d1a87c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Tag">
-      <UniqueIdentifier>{9bd78896-0558-43a1-b7dc-784becff51f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rate">
-      <UniqueIdentifier>{c05472a6-7a6a-467b-a0ed-d36e90c80c38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Rate">
-      <UniqueIdentifier>{23346de3-f49f-4f91-a8e1-a4463785c753}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Generated Files/file_organizer.rc">
+    <ResourceCompile Include="Generated Files\resources.rc">
       <Filter>Generated Files</Filter>
     </ResourceCompile>
   </ItemGroup>

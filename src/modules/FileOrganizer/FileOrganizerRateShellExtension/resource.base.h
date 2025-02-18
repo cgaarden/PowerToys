@@ -5,9 +5,9 @@
 //////////////////////////////
 // Non-localizable
 
-#define FILE_DESCRIPTION "PowerToys.FileOrganizer"
-#define INTERNAL_NAME "PowerToys.FileOrganizer"
-#define ORIGINAL_FILENAME "PowerToys.FileOrganizer.ShellExtension.dll"
+#define FILE_DESCRIPTION "PowerToys.FileOrganizer.Rate"
+#define INTERNAL_NAME "PowerToys.FileOrganizer.Rate"
+#define ORIGINAL_FILENAME "PowerToys.FileOrganizer.Rate.ShellExtension.dll"
 
 // Non-localizable
 //////////////////////////////

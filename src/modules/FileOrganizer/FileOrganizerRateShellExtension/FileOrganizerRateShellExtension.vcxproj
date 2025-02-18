@@ -2,15 +2,15 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\..\..\packages\Microsoft.Windows.CppWinRT.2.0.240111.5\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\..\..\..\packages\Microsoft.Windows.CppWinRT.2.0.240111.5\build\native\Microsoft.Windows.CppWinRT.props')" />
   <Target Name="GenerateResourceFiles" BeforeTargets="PrepareForBuild">
-    <Exec Command="powershell -NonInteractive -executionpolicy Unrestricted $(SolutionDir)tools\build\convert-resx-to-rc.ps1 $(MSBuildThisFileDirectory) resource.base.h resource.h file_organizer.base.rc file_organizer.rc" />
+    <Exec Command="powershell -NonInteractive -executionpolicy Unrestricted $(SolutionDir)tools\build\convert-resx-to-rc.ps1 $(MSBuildThisFileDirectory) resource.base.h resource.h resources.base.rc resources.rc" />
   </Target>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{D70BA961-A2BA-456C-8421-71107C217ADE}</ProjectGuid>
-    <RootNamespace>FileOrganizerShellExtension</RootNamespace>
+    <RootNamespace>FileOrganizerRateShellExtension</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
-    <ProjectName>FileOrganizer.ShellExtension</ProjectName>
+    <ProjectName>FileOrganizer.Rate.ShellExtension</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
@@ -38,14 +38,14 @@
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <TargetExt>.dll</TargetExt>
     <OutDir>..\..\..\..\$(Platform)\$(Configuration)\WinUI3Apps\</OutDir>
-    <TargetName>PowerToys.FileOrganizer.ShellExtension</TargetName>
+    <TargetName>PowerToys.FileOrganizer.Rate.ShellExtension</TargetName>
     <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\TemporaryBuild\obj\$(ProjectName)\</IntDir>
     <LinkIncremental />
     <IgnoreImportLibrary />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <OutDir>..\..\..\..\$(Platform)\$(Configuration)\WinUI3Apps\</OutDir>
-    <TargetName>PowerToys.FileOrganizer.ShellExtension</TargetName>
+    <TargetName>PowerToys.FileOrganizer.Rate.ShellExtension</TargetName>
     <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\TemporaryBuild\obj\$(ProjectName)\</IntDir>
     <LinkIncremental />
     <IgnoreImportLibrary />
@@ -71,8 +71,8 @@
       </IgnoreSpecificDefaultLibraries>
     </Link>
     <PreBuildEvent>
-      <Command>del $(OutDir)\FileOrganizerPackage.msix /q
-MakeAppx.exe pack /d . /p $(OutDir)FileOrganizerPackage.msix /nv</Command>
+      <Command>del $(OutDir)\FileOrganizer.Rate.Package.msix /q
+MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Rate.Package.msix /nv</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -104,8 +104,8 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizerPackage.msix /nv</Command>
       </IgnoreSpecificDefaultLibraries>
     </Link>
     <PreBuildEvent>
-      <Command>del $(OutDir)\FileOrganizerPackage.msix /q
-MakeAppx.exe pack /d . /p $(OutDir)FileOrganizerPackage.msix /nv</Command>
+      <Command>del $(OutDir)\FileOrganizer.Rate.Package.msix /q
+MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Rate.Package.msix /nv</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -117,9 +117,6 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizerPackage.msix /nv</Command>
     <ClInclude Include="rate_context_main_menu_item.h" />
     <ClInclude Include="rate_context_sub_menu_collection.h" />
     <ClInclude Include="rate_context_sub_menu_item.h" />
-    <ClInclude Include="tag_context_main_menu_item.h" />
-    <ClInclude Include="tag_context_sub_menu_collection.h" />
-    <ClInclude Include="tag_context_sub_menu_item.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="settings.h" />
     <ClInclude Include="trace.h" />
@@ -132,9 +129,6 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizerPackage.msix /nv</Command>
     <ClCompile Include="rate_context_main_menu_item.cpp" />
     <ClCompile Include="rate_context_sub_menu_collection.cpp" />
     <ClCompile Include="rate_context_sub_menu_item.cpp" />
-    <ClCompile Include="tag_context_main_menu_item.cpp" />
-    <ClCompile Include="tag_context_sub_menu_collection.cpp" />
-    <ClCompile Include="tag_context_sub_menu_item.cpp" />
     <ClCompile Include="dll_main.cpp" />
     <ClCompile Include="powertoys_module.cpp" />
     <ClCompile Include="settings.cpp" />
@@ -165,40 +159,7 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizerPackage.msix /nv</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Generated Files/file_organizer.rc" />
-    <None Include="file_organizer.base.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\FileOrganizer\LargeTile.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\FileOrganizer_light.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\SmallTile.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\SplashScreen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\Square150x150Logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\Square44x44Logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\StoreLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\Wide310x150Logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\rate_light.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer\tag_light.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="resources.base.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -208,6 +169,38 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizerPackage.msix /nv</Command>
   </ItemGroup>
   <ItemGroup>
     <None Include="AppxManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\FileOrganizer.Rate\FileOrganizer_light.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\rate_light.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\LargeTile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\SmallTile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\SplashScreen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\Square150x150Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\Square44x44Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\StoreLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Rate\Wide310x150Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Generated Files\resources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="..\..\..\..\deps\spdlog.props" />
