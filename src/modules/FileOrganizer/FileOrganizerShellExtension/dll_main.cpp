@@ -1,5 +1,6 @@
 #include "pch.h"
 
+#include "shell_context_menu.h"
 #include "dll_main.h"
 #include "trace.h"
 #include "rate_context_main_menu_item.h"
