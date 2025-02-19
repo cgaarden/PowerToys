@@ -33,8 +33,7 @@ IFACEMETHODIMP rate_context_main_menu_item::GetToolTip(_In_opt_ IShellItemArray*
 
 IFACEMETHODIMP rate_context_main_menu_item::GetCanonicalName(_Out_ GUID* returned_id)
 {
-    *returned_id = GUID_NULL;
-    // __uuidof(this);
+    *returned_id = __uuidof(this);
     return S_OK;
 }
 

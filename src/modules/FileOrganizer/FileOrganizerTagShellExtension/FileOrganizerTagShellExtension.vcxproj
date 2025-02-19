@@ -114,7 +114,7 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dll_main.h" />
-    <ClInclude Include="tag_context_main_menu_item.h" />
+    <ClInclude Include="tag_shell_extensions.h" />
     <ClInclude Include="tag_context_sub_menu_collection.h" />
     <ClInclude Include="tag_context_sub_menu_item.h" />
     <ClInclude Include="constants.h" />
@@ -126,12 +126,13 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
     <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="tag_context_main_menu_item.cpp" />
+    <ClCompile Include="tag_shell_extensions_context_menu.cpp" />
     <ClCompile Include="tag_context_sub_menu_collection.cpp" />
     <ClCompile Include="tag_context_sub_menu_item.cpp" />
     <ClCompile Include="dll_main.cpp" />
     <ClCompile Include="powertoys_module.cpp" />
     <ClCompile Include="settings.cpp" />
+    <ClCompile Include="tag_shell_extensions_icon_overlay.cpp" />
     <ClCompile Include="trace.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -196,6 +197,42 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Assets\FileOrganizer.Tag\Wide310x150Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_blue.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_blue_selected.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_blue-light.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_blue-light_selected.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_green.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_green-light.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_grey.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_grey-light.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_orange.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_orange-light.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_red.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_red-light.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "rate_context_sub_menu_collection.h"
 #include "rate_context_sub_menu_item.h"
 #include "trace.h"
@@ -11,26 +11,17 @@ rate_context_sub_menu_collection::rate_context_sub_menu_collection(const ComPtr<
 {
     this->site_of_folder = site_of_folder;
 
-    // cgaarden
+    // cgaarden hack for spec...
 
-    // Add items to context menu
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder));
-
-    // Add separator to context menu
-    // explorer_menu_item_commands.push_back(Make<separator_context_menu_item>());
-
-    // Add "Manage tags" item to context menu
-    // explorer_menu_item_commands.push_back(Make<template_folder_context_menu_item>(root));
+    // Add Rating items to context menu
+    // ⭐ ☆ ★
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆☆"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆☆☆"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"★★★★"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆☆☆☆☆"));
 
     current_command = explorer_menu_item_commands.cbegin();
-
-    // Save how many item templates we have so it can be sent later when we do something with New+.
-    // We don't send it here or it would send an event every time we open a context menu.
-//    newplus::utilities::set_saved_number_of_templates(static_cast<size_t>(number_of_templates));
 }
 
 // IEnumExplorerCommand

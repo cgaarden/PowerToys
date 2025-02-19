@@ -8,7 +8,7 @@ using namespace Microsoft::WRL;
 class rate_context_sub_menu_item : public RuntimeClass<RuntimeClassFlags<ClassicCom>, IExplorerCommand>
 {
 public:
-    rate_context_sub_menu_item(const ComPtr<IUnknown> site_of_folder);
+    rate_context_sub_menu_item(const ComPtr<IUnknown> site_of_folder, std::wstring title, EXPCMDSTATE menu_item_state = ECS_ENABLED);
 
     // IExplorerCommand
     IFACEMETHODIMP GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title);
@@ -30,4 +30,6 @@ public:
 protected:
     rate_context_sub_menu_item();
     ComPtr<IUnknown> site_of_folder;
+    std::wstring title;
+    EXPCMDSTATE menu_item_state;
 };

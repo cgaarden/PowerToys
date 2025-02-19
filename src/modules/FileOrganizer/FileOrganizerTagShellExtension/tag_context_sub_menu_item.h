@@ -8,7 +8,7 @@ using namespace Microsoft::WRL;
 class tag_context_sub_menu_item : public RuntimeClass<RuntimeClassFlags<ClassicCom>, IExplorerCommand>
 {
 public:
-    tag_context_sub_menu_item(const ComPtr<IUnknown> site_of_folder);
+    tag_context_sub_menu_item(const ComPtr<IUnknown> site_of_folder, std::wstring title, std::wstring icon_path, EXPCMDSTATE state = ECS_ENABLED);
 
     // IExplorerCommand
     IFACEMETHODIMP GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title);
@@ -30,6 +30,9 @@ public:
 protected:
     tag_context_sub_menu_item();
     ComPtr<IUnknown> site_of_folder;
+    std::wstring title;
+    std::wstring icon_path;
+    EXPCMDSTATE state;
 };
 
 // Sub-context-menu separator between the list of tags menu-items and "Manage tags" menu-item
@@ -41,6 +44,17 @@ public:
     IFACEMETHODIMP GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon);
 
     IFACEMETHODIMP GetFlags(_Out_ EXPCMDFLAGS* returned_flags);
+};
+
+// Sub-context-menu - The "All tags" menu-item
+class all_tags_context_menu_item final : public tag_context_sub_menu_item
+{
+public:
+    IFACEMETHODIMP GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title);
+
+    IFACEMETHODIMP GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon);
+
+    IFACEMETHODIMP Invoke(_In_opt_ IShellItemArray* selection, _In_opt_ IBindCtx*) noexcept;
 };
 
 // Sub-context-menu - The "Manage tags" menu-item

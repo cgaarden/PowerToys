@@ -14,15 +14,66 @@ tag_context_sub_menu_collection::tag_context_sub_menu_collection(const ComPtr<IU
     // cgaarden
 
     // Add items to context menu
-    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(site_of_folder));
-    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(site_of_folder));
-    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(site_of_folder));
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder, 
+        L"Blue", 
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"blue", file_organizer::utilities::tagged),
+        ECS_CHECKED));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Light blue",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"blue-light", file_organizer::utilities::tagged),
+        ECS_CHECKBOX));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Green",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"green")));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Light green",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"green-light")));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Grey",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"grey")));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Light grey",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"grey-light")));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Orange",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"orange")));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Light orange",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"orange-light")));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Red",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"red")));
+
+    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
+        site_of_folder,
+        L"Light red",
+        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"red-light")));
+
+    // Add "All tags" item to context menu
+    explorer_menu_item_commands.push_back(Make<all_tags_context_menu_item>());
 
     // Add separator to context menu
-    // explorer_menu_item_commands.push_back(Make<separator_context_menu_item>());
+    explorer_menu_item_commands.push_back(Make<separator_context_menu_item>());
 
     // Add "Manage tags" item to context menu
-    // explorer_menu_item_commands.push_back(Make<template_folder_context_menu_item>(root));
+    explorer_menu_item_commands.push_back(Make<manage_tags_context_menu_item>());
 
     current_command = explorer_menu_item_commands.cbegin();
 

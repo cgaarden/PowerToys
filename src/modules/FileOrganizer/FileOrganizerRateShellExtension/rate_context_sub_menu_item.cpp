@@ -8,28 +8,22 @@
 using namespace Microsoft::WRL;
 
 // Sub context menu containing the actual list of templates
-rate_context_sub_menu_item::rate_context_sub_menu_item()
-{
-//    this->template_entry = nullptr;
-}
-
-rate_context_sub_menu_item::rate_context_sub_menu_item(const ComPtr<IUnknown> site_of_folder)
+rate_context_sub_menu_item::rate_context_sub_menu_item(const ComPtr<IUnknown> site_of_folder, std::wstring title, EXPCMDSTATE menu_item_state)
 {
     this->site_of_folder = site_of_folder;
+    this->title = title;
+    this->menu_item_state = menu_item_state;
 }
 
 IFACEMETHODIMP rate_context_sub_menu_item::GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title)
 {
-    std::wstring tag1 = L"Rate";
-
-    return SHStrDup(tag1.c_str(), returned_title);
+    return SHStrDup(title.c_str(), returned_title);
 }
 
 IFACEMETHODIMP rate_context_sub_menu_item::GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon)
 {
     *returned_icon = nullptr;
-    static const auto icon_resource_filepath = file_organizer::utilities::get_rate_icon_resource_filepath(module_instance_handle, ThemeHelpers::GetAppTheme());
-    return SHStrDup(icon_resource_filepath.c_str(), returned_icon);
+    return E_NOTIMPL;
 }
 
 IFACEMETHODIMP rate_context_sub_menu_item::GetToolTip(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_info_tip)
@@ -44,7 +38,7 @@ IFACEMETHODIMP rate_context_sub_menu_item::GetCanonicalName(_Out_ GUID* guidComm
 }
 IFACEMETHODIMP rate_context_sub_menu_item::GetState(_In_opt_ IShellItemArray* selection, _In_ BOOL, _Out_ EXPCMDSTATE* returned_state)
 {
-    *returned_state = ECS_RADIOCHECK;
+    *returned_state = menu_item_state;
     return S_OK;
 }
 

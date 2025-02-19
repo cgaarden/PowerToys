@@ -2,7 +2,7 @@
 
 #include "dll_main.h"
 #include "trace.h"
-#include "tag_context_main_menu_item.h"
+#include "tag_shell_extensions.h"
 
 #include <common/Telemetry/EtwTrace/EtwTrace.h>
 
@@ -44,4 +44,4 @@ STDAPI DllGetClassObject(_In_ REFCLSID rclsid, _In_ REFIID riid, _Outptr_ LPVOID
     return Module<InProc>::GetModule().GetClassObject(rclsid, riid, ppv);
 }
 
-CoCreatableClass(tag_context_main_menu_item)
+CoCreatableClass(tag_shell_extensions)
