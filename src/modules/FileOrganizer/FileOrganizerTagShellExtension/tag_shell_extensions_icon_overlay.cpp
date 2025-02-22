@@ -59,8 +59,8 @@ STDMETHODIMP tag_shell_extensions::GetOverlayInfo(LPWSTR pwszIconFile, int cchMa
     //    break;
     //}
 
-    static const auto icon_resource_filepath = file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"blue");
 
+    static const auto icon_resource_filepath = file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"blue");
     wcscpy_s(pwszIconFile, cchMax, icon_resource_filepath.c_str());
     *pIndex = 0;
     *pdwFlags = ISIOI_ICONFILE;
