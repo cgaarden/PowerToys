@@ -16,7 +16,9 @@ namespace file_organizer::constants::non_localizable
     
     constexpr WCHAR module_name[] = L"FileOrganizer.Tag.ShellExtension";
 
+    constexpr WCHAR module_name_tag2[] = L"FileOrganizer.Tag.ShellExtension.Tag2";
+
     constexpr WCHAR tag_menu_icon_light_resource_relative_path[] = LR"(\Assets\FileOrganizer.Tag\tag_light.ico)";
 
-    constexpr WCHAR tag_color_pattern_icon_resource_relative_path[] = LR"(\Assets\FileOrganizer.Tag\tag_{COLOR}{STATE}.ico)";
+    constexpr WCHAR tag_number_pattern_icon_resource_relative_path[] = LR"(\Assets\FileOrganizer.Tag\tag_{NUMBER}{STATE}.ico)";
 }

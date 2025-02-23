@@ -43,6 +43,8 @@ public:
 
     IFACEMETHODIMP GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon);
 
+    IFACEMETHODIMP GetState(_In_opt_ IShellItemArray* selection, _In_ BOOL, _Out_ EXPCMDSTATE* returned_state);
+
     IFACEMETHODIMP GetFlags(_Out_ EXPCMDFLAGS* returned_flags);
 };
 

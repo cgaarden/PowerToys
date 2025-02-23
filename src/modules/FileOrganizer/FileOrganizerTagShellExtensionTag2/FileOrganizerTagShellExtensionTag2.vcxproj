@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\..\..\packages\Microsoft.Windows.CppWinRT.2.0.240111.5\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\..\..\..\packages\Microsoft.Windows.CppWinRT.2.0.240111.5\build\native\Microsoft.Windows.CppWinRT.props')" />
-  <Target Name="GenerateResourceFiles" BeforeTargets="PrepareForBuild">
-    <Exec Command="powershell -NonInteractive -executionpolicy Unrestricted $(SolutionDir)tools\build\convert-resx-to-rc.ps1 $(MSBuildThisFileDirectory) resource.base.h resource.h resources.base.rc resources.rc" />
-  </Target>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1DA16456-57DA-4828-A4D3-1FCCE7763830}</ProjectGuid>
-    <RootNamespace>FileOrganizerTagShellExtension</RootNamespace>
+    <ProjectGuid>{94D73CC1-1E85-4D99-8F2D-13788CC778CC}</ProjectGuid>
+    <RootNamespace>FileOrganizerTagShellExtension.Tag2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
-    <ProjectName>FileOrganizer.Tag.ShellExtension</ProjectName>
+    <ProjectName>FileOrganizer.Tag.ShellExtension.Tag2</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
@@ -38,14 +35,14 @@
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <TargetExt>.dll</TargetExt>
     <OutDir>..\..\..\..\$(Platform)\$(Configuration)\WinUI3Apps\</OutDir>
-    <TargetName>PowerToys.FileOrganizer.Tag.ShellExtension</TargetName>
+    <TargetName>PowerToys.FileOrganizer.Tag.ShellExtension.Tag2</TargetName>
     <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\TemporaryBuild\obj\$(ProjectName)\</IntDir>
     <LinkIncremental />
     <IgnoreImportLibrary />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <OutDir>..\..\..\..\$(Platform)\$(Configuration)\WinUI3Apps\</OutDir>
-    <TargetName>PowerToys.FileOrganizer.Tag.ShellExtension</TargetName>
+    <TargetName>PowerToys.FileOrganizer.Tag.ShellExtension.Tag2</TargetName>
     <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\TemporaryBuild\obj\$(ProjectName)\</IntDir>
     <LinkIncremental />
     <IgnoreImportLibrary />
@@ -59,7 +56,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>..\..\..\common\Telemetry;..\..\;..\..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\Telemetry;..\..\;..\..\..\;%(AdditionalIncludeDirectories);..\FileOrganizerTagShellExtension</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -71,8 +68,8 @@
       </IgnoreSpecificDefaultLibraries>
     </Link>
     <PreBuildEvent>
-      <Command>del $(OutDir)\FileOrganizer.Tag.Package.msix /q
-MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -90,7 +87,7 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>..\..\..\common\Telemetry;..\..\;..\..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\common\Telemetry;..\..\;..\..\..\;%(AdditionalIncludeDirectories);..\FileOrganizerTagShellExtension</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -104,8 +101,8 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
       </IgnoreSpecificDefaultLibraries>
     </Link>
     <PreBuildEvent>
-      <Command>del $(OutDir)\FileOrganizer.Tag.Package.msix /q
-MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -113,30 +110,22 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\FileOrganizerTagShellExtension\constants.h" />
+    <ClInclude Include="..\FileOrganizerTagShellExtension\trace.h" />
+    <ClInclude Include="..\FileOrganizerTagShellExtension\utilities.h" />
     <ClInclude Include="dll_main.h" />
-    <ClInclude Include="tag_shell_extensions.h" />
-    <ClInclude Include="tag_context_sub_menu_collection.h" />
-    <ClInclude Include="tag_context_sub_menu_item.h" />
-    <ClInclude Include="constants.h" />
-    <ClInclude Include="settings.h" />
+    <ClInclude Include="shell_icon_overlay_base.h" />
     <ClInclude Include="trace.h" />
-    <ClInclude Include="resource.base.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Generated Files/resource.h" />
-    <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="tag_shell_extensions_context_menu.cpp" />
-    <ClCompile Include="tag_context_sub_menu_collection.cpp" />
-    <ClCompile Include="tag_context_sub_menu_item.cpp" />
+    <ClCompile Include="..\FileOrganizerTagShellExtension\trace.cpp" />
+    <ClCompile Include="..\FileOrganizerTagShellExtension\utilities.cpp" />
     <ClCompile Include="dll_main.cpp" />
-    <ClCompile Include="powertoys_module.cpp" />
-    <ClCompile Include="settings.cpp" />
-    <ClCompile Include="trace.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="utilities.cpp" />
+    <ClCompile Include="shell_icon_overlay_base.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dll.def" />
@@ -159,84 +148,12 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources.base.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
-    <None Include="resources.resx">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AppxManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\FileOrganizer.Tag\FileOrganizer_light.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_light.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\LargeTile.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\SmallTile.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\SplashScreen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\Square150x150Logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\Square44x44Logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\StoreLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\Wide310x150Logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_1.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_1_selected.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Assets\FileOrganizer.Tag\tag_2.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_2_selected.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_3.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_4.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_5.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_6.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_7.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_8.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_9.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_10.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Generated Files\resources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="..\..\..\..\deps\spdlog.props" />

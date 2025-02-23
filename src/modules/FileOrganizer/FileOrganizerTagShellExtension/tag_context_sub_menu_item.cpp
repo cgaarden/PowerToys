@@ -82,6 +82,12 @@ IFACEMETHODIMP separator_context_menu_item::GetIcon(_In_opt_ IShellItemArray*, _
     return E_NOTIMPL;
 }
 
+IFACEMETHODIMP separator_context_menu_item::GetState(_In_opt_ IShellItemArray* selection, _In_ BOOL, _Out_ EXPCMDSTATE* returned_state)
+{
+    *returned_state = ECS_DISABLED;
+    return S_OK;
+}
+
 IFACEMETHODIMP separator_context_menu_item::GetFlags(_Out_ EXPCMDFLAGS* returned_flags)
 {
     *returned_flags = ECF_ISSEPARATOR;

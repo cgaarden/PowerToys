@@ -28,9 +28,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tag_shell_extensions_icon_overlay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.base.h" />
@@ -102,40 +99,40 @@
     <None Include="Assets\FileOrganizer.Tag\tag_light.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_blue.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_1.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_blue-light.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_2.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_green.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_3.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_green-light.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_4.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_grey.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_5.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_grey-light.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_6.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_orange.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_7.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_orange-light.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_8.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_red.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_9.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_red-light.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_10.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_blue_selected.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_1_selected.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_blue-light_selected.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_2_selected.ico">
       <Filter>Asset Files</Filter>
     </None>
   </ItemGroup>

@@ -15,5 +15,5 @@ namespace file_organizer::utilities
         not_tagged,
         tagged
     };
-    std::wstring get_tag_colored_icon_resource_filepath(const std::wstring& color, const tag_state state = not_tagged);
+    std::wstring get_tag_icon_number_resource_filepath(const std::wstring& number, const tag_state state = not_tagged);
 }

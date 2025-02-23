@@ -28,14 +28,14 @@ namespace file_organizer::utilities
         return icon_resource_path;
     }
 
-    std::wstring get_tag_colored_icon_resource_filepath(const std::wstring& color, const tag_state state)
+    std::wstring get_tag_icon_number_resource_filepath(const std::wstring& number, const tag_state state)
     {
         auto icon_resource_path = get_module_folderpath(module_instance_handle);
 
-        const std::wstring relative_icon_pattern_path = constants::non_localizable::tag_color_pattern_icon_resource_relative_path;
+        const std::wstring relative_icon_pattern_path = constants::non_localizable::tag_number_pattern_icon_resource_relative_path;
 
-        const std::wregex color_pattern(LR"(\{COLOR\})");
-        std::wstring relative_icon_color_path = std::regex_replace(relative_icon_pattern_path, color_pattern, color);
+        const std::wregex number_pattern(LR"(\{NUMBER\})");
+        std::wstring relative_icon_color_path = std::regex_replace(relative_icon_pattern_path, number_pattern, number);
 
         const std::wregex state_pattern(LR"(\{STATE\})");
         std::wstring replace_state_with;

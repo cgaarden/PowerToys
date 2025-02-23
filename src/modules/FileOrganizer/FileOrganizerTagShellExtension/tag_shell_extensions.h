@@ -10,18 +10,10 @@ using namespace Microsoft::WRL;
 class __declspec(uuid(FILE_ORGANIZER_SHELL_EXTENSION_TAG_EXPLORER_COMMAND_UUID_STR)) tag_shell_extensions final :
     public RuntimeClass<
         RuntimeClassFlags<ClassicCom>,
-        IShellIconOverlayIdentifier,
         IExplorerCommand,
         IObjectWithSite>
 {
 public:
-#pragma region IShellIconOverlayIdentifier
-    IFACEMETHODIMP GetOverlayInfo(LPWSTR pwszIconFile, int cchMax, int* pIndex, DWORD* pdwFlags);
-    IFACEMETHODIMP GetPriority(int* pPriority);
-    IFACEMETHODIMP IsMemberOf(LPCWSTR pwszPath, DWORD dwAttrib);
-#pragma endregion
-
-
 #pragma region IExplorerCommand
     IFACEMETHODIMP GetTitle(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_title);
     IFACEMETHODIMP GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon);

@@ -17,54 +17,54 @@ tag_context_sub_menu_collection::tag_context_sub_menu_collection(const ComPtr<IU
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder, 
         L"Blue", 
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"blue", file_organizer::utilities::tagged),
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"1", file_organizer::utilities::tagged),
         ECS_CHECKED));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
         L"Light blue",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"blue-light", file_organizer::utilities::tagged),
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"2", file_organizer::utilities::tagged),
         ECS_CHECKBOX));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
         L"Green",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"green")));
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"3")));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
         L"Light green",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"green-light")));
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"4")));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
-        L"Grey",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"grey")));
+        L"Renamed category 1",
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"5")));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
-        L"Light grey",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"grey-light")));
+        L"Renamed category 2",
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"6")));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
-        L"Orange",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"orange")));
+        L"Renamed category 3",
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"7")));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
-        L"Light orange",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"orange-light")));
+        L"Renamed category 4",
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"8")));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
-        L"Red",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"red")));
+        L"Renamed category 5",
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"9")));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
-        L"Light red",
-        file_organizer::utilities::get_tag_colored_icon_resource_filepath(L"red-light")));
+        L"Renamed category 6",
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"10")));
 
     // Add "All tags" item to context menu
     explorer_menu_item_commands.push_back(Make<all_tags_context_menu_item>());
@@ -76,10 +76,6 @@ tag_context_sub_menu_collection::tag_context_sub_menu_collection(const ComPtr<IU
     explorer_menu_item_commands.push_back(Make<manage_tags_context_menu_item>());
 
     current_command = explorer_menu_item_commands.cbegin();
-
-    // Save how many item templates we have so it can be sent later when we do something with New+.
-    // We don't send it here or it would send an event every time we open a context menu.
-//    newplus::utilities::set_saved_number_of_templates(static_cast<size_t>(number_of_templates));
 }
 
 // IEnumExplorerCommand
