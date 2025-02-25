@@ -2,8 +2,7 @@
 
 #include "dll_main.h"
 #include "trace.h"
-//#include "tag_shell_extensions_icon_overlay_tag2.h"
-#include "shell_icon_overlay_base.h"
+#include "shell_icon_overlays.h"
 
 #include <common/Telemetry/EtwTrace/EtwTrace.h>
 
@@ -48,3 +47,10 @@ STDAPI DllGetClassObject(_In_ REFCLSID rclsid, _In_ REFIID riid, _Outptr_ LPVOID
 CoCreatableClass(tag_icon_overlay_handler_1)
 CoCreatableClass(tag_icon_overlay_handler_2)
 CoCreatableClass(tag_icon_overlay_handler_3)
+CoCreatableClass(tag_icon_overlay_handler_4)
+CoCreatableClass(tag_icon_overlay_handler_5)
+CoCreatableClass(tag_icon_overlay_handler_6)
+CoCreatableClass(tag_icon_overlay_handler_7)
+CoCreatableClass(tag_icon_overlay_handler_8)
+CoCreatableClass(tag_icon_overlay_handler_9)
+CoCreatableClass(tag_icon_overlay_handler_multiple)

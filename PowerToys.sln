@@ -642,7 +642,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileOrganizer.Rate.ShellExt
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileOrganizer.Tag.ShellExtension", "src\modules\FileOrganizer\FileOrganizerTagShellExtension\FileOrganizerTagShellExtension.vcxproj", "{1DA16456-57DA-4828-A4D3-1FCCE7763830}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileOrganizer.Tag.ShellExtension.Tag2", "src\modules\FileOrganizer\FileOrganizerTagShellExtensionTag2\FileOrganizerTagShellExtensionTag2.vcxproj", "{94D73CC1-1E85-4D99-8F2D-13788CC778CC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileOrganizer.Tag.IconsOverlays", "src\modules\FileOrganizer\FileOrganizerTagIconOverlays\FileOrganizerTagIconOverlays.vcxproj", "{94D73CC1-1E85-4D99-8F2D-13788CC778CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

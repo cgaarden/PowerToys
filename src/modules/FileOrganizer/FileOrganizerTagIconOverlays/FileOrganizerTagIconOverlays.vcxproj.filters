@@ -13,7 +13,7 @@
     <ClCompile Include="..\FileOrganizerTagShellExtension\trace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shell_icon_overlay_base.cpp">
+    <ClCompile Include="shell_icon_overlays.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,7 +36,7 @@
     <ClInclude Include="..\FileOrganizerTagShellExtension\trace.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="shell_icon_overlay_base.h">
+    <ClInclude Include="shell_icon_overlays.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -45,14 +45,8 @@
     <None Include="dll.def">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_2.ico">
-      <Filter>Asset Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Asset Files">
-      <UniqueIdentifier>{a1490891-feae-49b4-a4d9-e09cebacdbb5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{dd38225d-1b3d-44fd-bb50-4c0318d8ebdf}</UniqueIdentifier>
     </Filter>

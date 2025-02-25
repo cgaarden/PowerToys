@@ -231,7 +231,7 @@ MakeAppx.exe pack /d . /p $(OutDir)FileOrganizer.Tag.Package.msix /nv</Command>
     <None Include="Assets\FileOrganizer.Tag\tag_9.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_10.ico">
+    <None Include="Assets\FileOrganizer.Tag\tag_multiple.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

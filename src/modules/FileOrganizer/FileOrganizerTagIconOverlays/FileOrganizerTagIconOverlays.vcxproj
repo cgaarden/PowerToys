@@ -5,9 +5,9 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{94D73CC1-1E85-4D99-8F2D-13788CC778CC}</ProjectGuid>
-    <RootNamespace>FileOrganizerTagShellExtension.Tag2</RootNamespace>
+    <RootNamespace>FileOrganizerTagIconOverlays</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.20348.0</WindowsTargetPlatformVersion>
-    <ProjectName>FileOrganizer.Tag.ShellExtension.Tag2</ProjectName>
+    <ProjectName>FileOrganizer.Tag.IconsOverlays</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
@@ -35,14 +35,14 @@
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <TargetExt>.dll</TargetExt>
     <OutDir>..\..\..\..\$(Platform)\$(Configuration)\WinUI3Apps\</OutDir>
-    <TargetName>PowerToys.FileOrganizer.Tag.ShellExtension.Tag2</TargetName>
+    <TargetName>PowerToys.FileOrganizer.Tag.IconsOverlays</TargetName>
     <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\TemporaryBuild\obj\$(ProjectName)\</IntDir>
     <LinkIncremental />
     <IgnoreImportLibrary />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <OutDir>..\..\..\..\$(Platform)\$(Configuration)\WinUI3Apps\</OutDir>
-    <TargetName>PowerToys.FileOrganizer.Tag.ShellExtension.Tag2</TargetName>
+    <TargetName>PowerToys.FileOrganizer.Tag.IconsOverlays</TargetName>
     <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\TemporaryBuild\obj\$(ProjectName)\</IntDir>
     <LinkIncremental />
     <IgnoreImportLibrary />
@@ -114,7 +114,7 @@
     <ClInclude Include="..\FileOrganizerTagShellExtension\trace.h" />
     <ClInclude Include="..\FileOrganizerTagShellExtension\utilities.h" />
     <ClInclude Include="dll_main.h" />
-    <ClInclude Include="shell_icon_overlay_base.h" />
+    <ClInclude Include="shell_icon_overlays.h" />
     <ClInclude Include="trace.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
@@ -125,7 +125,7 @@
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="shell_icon_overlay_base.cpp" />
+    <ClCompile Include="shell_icon_overlays.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dll.def" />
@@ -149,11 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\FileOrganizer.Tag\tag_2.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="..\..\..\..\deps\spdlog.props" />
