@@ -59,6 +59,17 @@ public:
     IFACEMETHODIMP Invoke(_In_opt_ IShellItemArray* selection, _In_opt_ IBindCtx*) noexcept;
 };
 
+// Sub-context-menu - The "Remove all tags" menu-item
+class remove_all_tags_context_menu_item final : public tag_context_sub_menu_item
+{
+public:
+    IFACEMETHODIMP GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title);
+
+    IFACEMETHODIMP GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon);
+
+    IFACEMETHODIMP Invoke(_In_opt_ IShellItemArray* selection, _In_opt_ IBindCtx*) noexcept;
+};
+
 // Sub-context-menu - The "Manage tags" menu-item
 class manage_tags_context_menu_item final : public tag_context_sub_menu_item
 {

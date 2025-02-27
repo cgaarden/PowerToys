@@ -98,7 +98,7 @@ IFACEMETHODIMP separator_context_menu_item::GetFlags(_Out_ EXPCMDFLAGS* returned
 IFACEMETHODIMP all_tags_context_menu_item::GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title)
 {
     static const std::wstring localized_context_menu_item =
-        GET_RESOURCE_STRING_FALLBACK(IDS_CONTEXT_MENU_ITEM_TAG_ALL_TAGS, L"All tags");
+        GET_RESOURCE_STRING_FALLBACK(IDS_CONTEXT_MENU_ITEM_ALL_TAGS, L"All tags");
     return SHStrDup(localized_context_menu_item.c_str(), returned_title);
 }
 
@@ -113,11 +113,30 @@ IFACEMETHODIMP all_tags_context_menu_item::Invoke(_In_opt_ IShellItemArray* sele
     return E_NOTIMPL;
 }
 
+// Sub context menu - "Remove all tags"
+IFACEMETHODIMP remove_all_tags_context_menu_item::GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title)
+{
+    static const std::wstring localized_context_menu_item =
+        GET_RESOURCE_STRING_FALLBACK(IDS_CONTEXT_MENU_ITEM_REMOVE_ALL_TAGS, L"Remove all tags");
+    return SHStrDup(localized_context_menu_item.c_str(), returned_title);
+}
+
+IFACEMETHODIMP remove_all_tags_context_menu_item::GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon)
+{
+    *returned_icon = nullptr;
+    return E_NOTIMPL;
+}
+
+IFACEMETHODIMP remove_all_tags_context_menu_item::Invoke(_In_opt_ IShellItemArray* selection, _In_opt_ IBindCtx*) noexcept
+{
+    return E_NOTIMPL;
+}
+
 // Sub context menu - "Manage tags"
 IFACEMETHODIMP manage_tags_context_menu_item::GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title)
 {
     static const std::wstring localized_context_menu_item =
-        GET_RESOURCE_STRING_FALLBACK(IDS_CONTEXT_MENU_ITEM_TAG_MANAGE_TAGS, L"Manage tags");
+        GET_RESOURCE_STRING_FALLBACK(IDS_CONTEXT_MENU_ITEM_MANAGE_TAGS, L"Manage tags");
     return SHStrDup(localized_context_menu_item.c_str(), returned_title);
 }
 

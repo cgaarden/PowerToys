@@ -125,11 +125,15 @@
     <value>Tag</value>
     <comment>The 'Tag' context menu item that users click on. This should be localized to match tag in Windows.</comment>
   </data>
-  <data name="context_menu_item_tag_all_tags" xml:space="preserve">
+  <data name="context_menu_item_all_tags" xml:space="preserve">
     <value>All tags</value>
     <comment>The 'All tags' context submenu item that users click on.</comment>
   </data>
-  <data name="context_menu_item_tag_manage_tags" xml:space="preserve">
+  <data name="context_menu_item_remove_all_tags" xml:space="preserve">
+    <value>Remove all tags</value>
+    <comment>The 'Remove all tags' context submenu item that users click on.</comment>
+  </data>
+  <data name="context_menu_item_manage_tags" xml:space="preserve">
     <value>Manage tags</value>
     <comment>The 'Manage tags' context submenu item that users click on.</comment>
   </data>

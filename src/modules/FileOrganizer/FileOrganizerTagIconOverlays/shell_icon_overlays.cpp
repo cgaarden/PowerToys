@@ -126,7 +126,7 @@ tag_icon_overlay_handler_9::tag_icon_overlay_handler_9()
 
 tag_icon_overlay_handler_multiple::tag_icon_overlay_handler_multiple()
 {
-    handler_priority = 10;
+    handler_priority = 0;
     file_name = L"tags.txt";
     icon_resource_filepath = file_organizer::utilities::get_tag_icon_number_resource_filepath(L"multiple");
 };

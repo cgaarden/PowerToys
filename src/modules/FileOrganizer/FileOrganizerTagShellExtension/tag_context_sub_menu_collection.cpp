@@ -69,6 +69,9 @@ tag_context_sub_menu_collection::tag_context_sub_menu_collection(const ComPtr<IU
     // Add "All tags" item to context menu
     explorer_menu_item_commands.push_back(Make<all_tags_context_menu_item>());
 
+    // Add "Remove all tags" item to context menu
+    explorer_menu_item_commands.push_back(Make<remove_all_tags_context_menu_item>());
+
     // Add separator to context menu
     explorer_menu_item_commands.push_back(Make<separator_context_menu_item>());
 

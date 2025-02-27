@@ -20,6 +20,7 @@ rate_context_sub_menu_collection::rate_context_sub_menu_collection(const ComPtr<
     explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆☆☆"));
     explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"★★★★"));
     explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆☆☆☆☆"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"Remove rating"));
 
     current_command = explorer_menu_item_commands.cbegin();
 }
