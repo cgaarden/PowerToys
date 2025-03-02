@@ -61,11 +61,6 @@ tag_context_sub_menu_collection::tag_context_sub_menu_collection(const ComPtr<IU
         L"Renamed category 5",
         file_organizer::utilities::get_tag_icon_number_resource_filepath(L"9")));
 
-    explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
-        site_of_folder,
-        L"Renamed category 6",
-        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"10")));
-
     // Add "All tags" item to context menu
     explorer_menu_item_commands.push_back(Make<all_tags_context_menu_item>());
 

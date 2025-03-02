@@ -132,7 +132,12 @@
     <None Include="Assets\FileOrganizer.Tag\tag_2_selected.ico">
       <Filter>Asset Files</Filter>
     </None>
-    <None Include="Assets\FileOrganizer.Tag\tag_multiple.ico" />
+    <None Include="Assets\FileOrganizer.Tag\tag_multiple.ico">
+      <Filter>Asset Files</Filter>
+    </None>
+    <None Include="Assets\FileOrganizer.Tag\tag_manage_all.ico">
+      <Filter>Asset Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Generated Files">
