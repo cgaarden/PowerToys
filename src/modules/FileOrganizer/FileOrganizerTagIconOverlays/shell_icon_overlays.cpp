@@ -43,18 +43,8 @@ IFACEMETHODIMP shell_icon_overlay_base::IsMemberOf(LPCWSTR full_path, DWORD file
         return S_FALSE;
     }
 
-    // cgaarden
-    //std::wstring temp_message = L"shell_icon_overlay_base: ";
-    //temp_message += full_path;
-    //Logger::error(temp_message.c_str());
-
     if (wcsstr(full_path, file_name.c_str()) != nullptr)
     {
-        // cgaarden
-        if (file_name == L"s.txt")
-        {
-            Logger::info(file_name.c_str());
-        }
         return S_OK;
     }
 
@@ -127,6 +117,6 @@ tag_icon_overlay_handler_9::tag_icon_overlay_handler_9()
 tag_icon_overlay_handler_multiple::tag_icon_overlay_handler_multiple()
 {
     handler_priority = 0;
-    file_name = L"tags.txt";
+    file_name = L"multiple tags";
     icon_resource_filepath = file_organizer::utilities::get_tag_icon_number_resource_filepath(L"multiple");
 };
