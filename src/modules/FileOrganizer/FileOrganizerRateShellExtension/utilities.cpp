@@ -11,7 +11,7 @@ namespace file_organizer::utilities
             static const auto dll_path = get_module_folderpath(module_instance_handle);
             static const auto package_uri = dll_path + L"\\" + constants::non_localizable::msix_package_name;
 
-            if (!package::IsPackageRegistered(constants::non_localizable::context_menu_package_name))
+            if (!package::IsPackageRegisteredWithPowerToysVersion(constants::non_localizable::context_menu_package_name))
             {
                 package::RegisterSparsePackage(dll_path, package_uri);
             }
