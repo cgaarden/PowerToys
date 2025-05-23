@@ -22,7 +22,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace Microsoft.PowerToys.Settings.UI.ViewModels
 {
-    public class DashboardViewModel : Observable
+    public partial class DashboardViewModel : Observable
     {
         private const string JsonFileType = ".json";
         private IFileSystemWatcher _watcher;
@@ -55,7 +55,7 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
 
             _allModules = new List<DashboardListItem>();
 
-            foreach (ModuleType moduleType in Enum.GetValues(typeof(ModuleType)))
+            foreach (ModuleType moduleType in Enum.GetValues<ModuleType>())
             {
                 AddDashboardListItem(moduleType);
             }
@@ -74,7 +74,6 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
             {
                 Tag = moduleType,
                 Label = resourceLoader.GetString(ModuleHelper.GetModuleLabelResourceName(moduleType)),
-                IsNew = moduleType == ModuleType.ZoomIt,
                 IsEnabled = gpo == GpoRuleConfigured.Enabled || (gpo != GpoRuleConfigured.Disabled && ModuleHelper.GetIsModuleEnabled(generalSettingsConfig, moduleType)),
                 IsLocked = gpo == GpoRuleConfigured.Enabled || gpo == GpoRuleConfigured.Disabled,
                 Icon = ModuleHelper.GetModuleTypeFluentIconName(moduleType),
@@ -173,6 +172,7 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
                 ModuleType.AdvancedPaste => GetModuleItemsAdvancedPaste(),
                 ModuleType.AlwaysOnTop => GetModuleItemsAlwaysOnTop(),
                 ModuleType.Awake => GetModuleItemsAwake(),
+                ModuleType.CmdPal => GetModuleItemsCmdPal(),
                 ModuleType.ColorPicker => GetModuleItemsColorPicker(),
                 ModuleType.CropAndLock => GetModuleItemsCropAndLock(),
                 ModuleType.EnvironmentVariables => GetModuleItemsEnvironmentVariables(),
@@ -216,6 +216,17 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
             var list = new List<DashboardModuleItem>
             {
                 new DashboardModuleTextItem() { Label = resourceLoader.GetString("Awake_ShortDescription") },
+            };
+            return new ObservableCollection<DashboardModuleItem>(list);
+        }
+
+        private ObservableCollection<DashboardModuleItem> GetModuleItemsCmdPal()
+        {
+            var hotkey = new CmdPalProperties().Hotkey;
+
+            var list = new List<DashboardModuleItem>
+            {
+                new DashboardModuleShortcutItem() { Label = resourceLoader.GetString("CmdPal_ShortDescription"), Shortcut = hotkey.GetKeysList() },
             };
             return new ObservableCollection<DashboardModuleItem>(list);
         }

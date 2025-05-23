@@ -363,7 +363,11 @@ private:
 
     void update_state_from_settings(const PowerToysSettings::PowerToyValues& values)
     {
-        const bool new_run_in_service_mode = values.get_bool_value(USE_SERVICE_PROPERTY_NAME).value_or(false);
+        bool new_run_in_service_mode = values.get_bool_value(USE_SERVICE_PROPERTY_NAME).value_or(false);
+        if (powertoys_gpo::getConfiguredMwbAllowServiceModeValue() == powertoys_gpo::gpo_rule_configured_disabled)
+        {
+            new_run_in_service_mode = false;
+        }
 
         if (new_run_in_service_mode != run_in_service_mode)
         {
@@ -563,7 +567,7 @@ public:
         executable_args.append(L"\" & echo \"Adding an inbound firewall rule for PowerToys.MouseWithoutBorders.exe\"");
         executable_args.append(L" & netsh advfirewall firewall add rule name=\"PowerToys.MouseWithoutBorders\" dir=in action=allow program=\"");
         executable_args.append(executable_path);
-        executable_args.append(L"\" enable=yes remoteip=LocalSubnet profile=any protocol=tcp & pause\"");
+        executable_args.append(L"\" enable=yes remoteip=any profile=any protocol=tcp & pause\"");
 
         SHELLEXECUTEINFOW sei{ sizeof(sei) };
         sei.fMask = { SEE_MASK_NOCLOSEPROCESS | SEE_MASK_FLAG_NO_UI };

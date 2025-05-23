@@ -14,6 +14,11 @@
 #include <WindowProperties/WorkspacesWindowPropertyUtils.h>
 #include <WorkspacesLib/PwaHelper.h>
 
+namespace NonLocalizable
+{
+    const std::wstring ApplicationFrameHost = L"ApplicationFrameHost.exe";
+}
+
 namespace PlacementHelper
 {
     // When calculating the coordinates difference (== 'distance') between 2 windows, there are additional values added to the real distance
@@ -62,7 +67,6 @@ namespace PlacementHelper
         else
         {
             placement.showCmd = SW_RESTORE;
-
             ScreenToWorkAreaCoords(window, monitor, rect);
             placement.rcNormalPosition = rect;
         }
@@ -158,6 +162,11 @@ std::optional<WindowWithDistance> WindowArranger::GetNearestWindow(const Workspa
 
     for (HWND window : m_windowsBefore)
     {
+        if (WindowFilter::FilterPopup(window))
+        {
+            continue;
+        }
+
         if (std::find(movedWindows.begin(), movedWindows.end(), window) != movedWindows.end())
         {
             continue;
@@ -171,8 +180,34 @@ std::optional<WindowWithDistance> WindowArranger::GetNearestWindow(const Workspa
 
         DWORD pid{};
         GetWindowThreadProcessId(window, &pid);
+        std::wstring title = WindowUtils::GetWindowTitle(window);
+
+        // fix for the packaged apps that are not caught when minimized, e.g. Settings, Microsoft ToDo, ...
+        if (processPath.ends_with(NonLocalizable::ApplicationFrameHost))
+        {
+            for (auto otherWindow : m_windowsBefore)
+            {
+                DWORD otherPid{};
+                GetWindowThreadProcessId(otherWindow, &otherPid);
+
+                // searching for the window with the same title but different PID
+                if (pid != otherPid && title == WindowUtils::GetWindowTitle(otherWindow))
+                {
+                    processPath = get_process_path(otherPid);
+                    break;
+                }
+            }
+        }
 
         auto data = Utils::Apps::GetApp(processPath, pid, m_installedApps);
+
+        if (!data->IsSteamGame() && !WindowUtils::HasThickFrame(window))
+        {
+            // Only care about steam games if it has no thick frame to remain consistent with 
+            // the behavior as before.
+            continue;
+        }
+
         if (!data.has_value())
         {
             continue;
@@ -430,9 +465,11 @@ bool WindowArranger::moveWindow(HWND window, const WorkspacesData::WorkspacesPro
         Logger::error(L"No monitor saved for launching the app");
         return false;
     }
+    UINT snapDPI = snapMonitorIter->dpi;
 
     bool launchMinimized = app.isMinimized;
     bool launchMaximized = app.isMaximized;
+    RECT rect = app.position.toRect();
 
     HMONITOR currentMonitor{};
     UINT currentDpi = DPIAware::DEFAULT_DPI;
@@ -446,12 +483,18 @@ bool WindowArranger::moveWindow(HWND window, const WorkspacesData::WorkspacesPro
     {
         currentMonitor = MonitorFromPoint(POINT{ 0, 0 }, MONITOR_DEFAULTTOPRIMARY);
         DPIAware::GetScreenDPIForMonitor(currentMonitor, currentDpi);
+        snapDPI = DPIAware::DEFAULT_DPI;
         launchMinimized = true;
         launchMaximized = false;
+        MONITORINFOEX monitorInfo;
+        monitorInfo.cbSize = sizeof(monitorInfo);
+        if (GetMonitorInfo(currentMonitor, &monitorInfo))
+        {
+            rect = monitorInfo.rcWork;
+        }
     }
 
-    RECT rect = app.position.toRect();
-    float mult = static_cast<float>(snapMonitorIter->dpi) / currentDpi;
+    float mult = static_cast<float>(snapDPI) / currentDpi;
     rect.left = static_cast<long>(std::round(rect.left * mult));
     rect.right = static_cast<long>(std::round(rect.right * mult));
     rect.top = static_cast<long>(std::round(rect.top * mult));

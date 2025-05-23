@@ -33,6 +33,7 @@ using MouseWithoutBorders.Core;
 using Settings.UI.Library.Attributes;
 
 using Lock = System.Threading.Lock;
+using SettingsHelper = Microsoft.PowerToys.Settings.UI.Library.Utilities.Helper;
 
 [module: SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "MouseWithoutBorders.Properties.Setting.Values.#LoadIntSetting(System.String,System.Int32)", Justification = "Dotnet port with style preservation")]
 [module: SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "MouseWithoutBorders.Properties.Setting.Values.#SaveSetting(System.String,System.Object)", Justification = "Dotnet port with style preservation")]
@@ -102,7 +103,7 @@ namespace MouseWithoutBorders.Class
                         if (!Enumerable.SequenceEqual(last_properties.MachineMatrixString, _settings.Properties.MachineMatrixString))
                         {
                             _properties.MachineMatrixString = _settings.Properties.MachineMatrixString;
-                            Common.MachineMatrix = null; // Forces read next time it's needed.
+                            MachineStuff.MachineMatrix = null; // Forces read next time it's needed.
                             shouldSendMachineMatrix = true;
                         }
 
@@ -123,7 +124,7 @@ namespace MouseWithoutBorders.Class
 
                         if (shouldSendMachineMatrix)
                         {
-                            Common.SendMachineMatrix();
+                            MachineStuff.SendMachineMatrix();
                             shouldSaveNewSettingsValues = true;
                         }
 
@@ -193,7 +194,7 @@ namespace MouseWithoutBorders.Class
         {
             _settingsUtils = new SettingsUtils();
 
-            _watcher = Helper.GetFileWatcher("MouseWithoutBorders", "settings.json", () =>
+            _watcher = SettingsHelper.GetFileWatcher("MouseWithoutBorders", "settings.json", () =>
             {
                 try
                 {
@@ -1090,6 +1091,11 @@ namespace MouseWithoutBorders.Class
         {
             get
             {
+                if (GPOWrapper.GetConfiguredMwbAllowServiceModeValue() == GpoRuleConfigured.Disabled)
+                {
+                    return false;
+                }
+
                 lock (_loadingSettingsLock)
                 {
                     return _properties.UseService;
@@ -1098,6 +1104,11 @@ namespace MouseWithoutBorders.Class
 
             set
             {
+                if (AllowServiceModeIsGpoConfigured)
+                {
+                    return;
+                }
+
                 lock (_loadingSettingsLock)
                 {
                     _properties.UseService = value;
@@ -1108,6 +1119,10 @@ namespace MouseWithoutBorders.Class
                 }
             }
         }
+
+        [CmdConfigureIgnore]
+        [JsonIgnore]
+        internal bool AllowServiceModeIsGpoConfigured => GPOWrapper.GetConfiguredMwbAllowServiceModeValue() == GpoRuleConfigured.Disabled;
 
         // Note(@htcfreek): Settings UI CheckBox is disabled in frmMatrix.cs > FrmMatrix_Load()
         internal bool SendErrorLogV2

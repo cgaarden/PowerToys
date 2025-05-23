@@ -31,6 +31,7 @@ namespace Common.UI
             Dashboard,
             AdvancedPaste,
             Workspaces,
+            CmdPal,
             ZoomIt,
         }
 
@@ -78,6 +79,8 @@ namespace Common.UI
                     return "AdvancedPaste";
                 case SettingsWindow.Workspaces:
                     return "Workspaces";
+                case SettingsWindow.CmdPal:
+                    return "CmdPal";
                 case SettingsWindow.ZoomIt:
                     return "ZoomIt";
                 default:
@@ -91,20 +94,20 @@ namespace Common.UI
         {
             try
             {
-                var assemblyPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                var fullPath = new DirectoryInfo(assemblyPath).FullName;
+                var directoryPath = System.AppContext.BaseDirectory;
                 if (mainExecutableIsOnTheParentFolder)
                 {
                     // Need to go into parent folder for PowerToys.exe. Likely a WinUI3 App SDK application.
-                    fullPath = fullPath + "\\..\\PowerToys.exe";
+                    directoryPath = Path.Combine(directoryPath, "..");
+                    directoryPath = Path.Combine(directoryPath, "PowerToys.exe");
                 }
                 else
                 {
                     // PowerToys.exe is in the same path as the application.
-                    fullPath = fullPath + "\\PowerToys.exe";
+                    directoryPath = Path.Combine(directoryPath, "PowerToys.exe");
                 }
 
-                Process.Start(new ProcessStartInfo(fullPath) { Arguments = "--open-settings=" + SettingsWindowNameToString(window) });
+                Process.Start(new ProcessStartInfo(directoryPath) { Arguments = "--open-settings=" + SettingsWindowNameToString(window) });
             }
             catch
             {

@@ -71,7 +71,8 @@ void NewSettings::InitializeWithDefaultSettings()
     // Currently a similar defaulting logic is also in InitializeWithDefaultSettings in NewViewModel.cs
     SetHideFileExtension(true);
 
-    SetReplaceVariables(true);
+    // By default Replace Variables is turned off
+    SetReplaceVariables(false);
 
     SetTemplateLocation(GetTemplateLocationDefaultPath());
 }
@@ -179,7 +180,7 @@ bool NewSettings::GetHideFileExtension() const
         return false;
     }
 
-    return true;
+    return new_settings.hide_file_extension;
 }
 
 void NewSettings::SetHideFileExtension(const bool hide_file_extension)
@@ -206,7 +207,7 @@ bool NewSettings::GetReplaceVariables() const
         return false;
     }
 
-    return true;
+    return new_settings.replace_variables;
 }
 
 void NewSettings::SetReplaceVariables(const bool replace_variables)

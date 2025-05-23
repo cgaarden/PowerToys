@@ -263,9 +263,21 @@
                         </ComboBox>
                     </tkcontrols:SettingsCard>
 
-                    <tkcontrols:SettingsCard x:Uid="GeneralPage_RunAtStartUp">
+                    <tkcontrols:SettingsCard x:Uid="GeneralPage_RunAtStartUp" IsEnabled="{x:Bind ViewModel.IsRunAtStartupGPOManaged, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}">
                         <ToggleSwitch x:Uid="ToggleSwitch" IsOn="{x:Bind ViewModel.Startup, Mode=TwoWay}" />
                     </tkcontrols:SettingsCard>
+                    <InfoBar
+                        x:Uid="GPO_SettingIsManaged"
+                        BorderThickness="0"
+                        CornerRadius="0"
+                        IsClosable="False"
+                        IsOpen="{x:Bind ViewModel.IsRunAtStartupGPOManaged, Mode=OneWay}"
+                        IsTabStop="{x:Bind ViewModel.IsRunAtStartupGPOManaged, Mode=OneWay}"
+                        Severity="Informational">
+                        <InfoBar.IconSource>
+                            <FontIconSource FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72E;" />
+                        </InfoBar.IconSource>
+                    </InfoBar>
                 </controls:SettingsGroup>
 
                 <controls:SettingsGroup x:Uid="General_SettingsBackupAndRestoreTitle" Visibility="Visible">
@@ -446,7 +458,7 @@
         <controls:SettingsPageControl.PrimaryLinks>
             <controls:PageLink x:Uid="GeneralPage_Documentation" Link="https://aka.ms/PowerToysOverview" />
             <controls:PageLink x:Uid="General_Repository" Link="https://aka.ms/powertoys" />
-            <controls:PageLink x:Uid="GeneralPage_ReportAbug" Link="https://aka.ms/powerToysReportBug" />
+            <controls:PageLink x:Uid="GeneralPage_ReportAbug" Link="{x:Bind ViewModel.ReportBugLink, Mode=OneWay}" />
             <controls:PageLink x:Uid="GeneralPage_RequestAFeature_URL" Link="https://aka.ms/powerToysRequestFeature" />
         </controls:SettingsPageControl.PrimaryLinks>
         <controls:SettingsPageControl.SecondaryLinks>

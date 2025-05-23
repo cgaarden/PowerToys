@@ -89,6 +89,7 @@ onefuzzingestionpreparationtool
 OTP
 Yubi
 Yubico
+svgl
 
 # KEYS
 
@@ -232,6 +233,9 @@ SWAPBUTTON
 SYSTEMDOCKED
 TABLETPC
 
+# Units
+nmi
+
 # MATH
 
 artanh
@@ -263,6 +267,15 @@ onefuzz
 
 # NameInCode
 leilzh
+mengyuanchen
+
+# DllName
+testhost
+Testably
 
 #Tools
 OIP
+xef
+xes
+PACKAGEVERSIONNUMBER
+APPXMANIFESTVERSION

@@ -40,6 +40,9 @@ parameters:
 
 name: $(BuildDefinitionName)_$(date:yyMM).$(date:dd)$(rev:rrr)
 
+variables:
+  - template: templates/variables-nuget-package-version.yml
+
 extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1ESPipelineTemplates
   parameters:
@@ -79,6 +82,7 @@ extends:
               buildConfigurations: ${{ parameters.buildConfigurations }}
               versionNumber: ${{ parameters.versionNumber }}
               publishArtifacts: false # 1ES PT handles publication for us.
+              official: true
               codeSign: true
               runTests: false
               signingIdentity:
@@ -88,6 +92,8 @@ extends:
                 akvName: $(SigningAKVName)
                 authCertName: $(SigningAuthCertName)
                 signCertName: $(SigningSignCertName)
+                useManagedIdentity: $(SigningUseManagedIdentity)
+                clientId: $(SigningOriginalClientId)
               # Have msbuild use the release nuget config profile
               additionalBuildOptions: /p:RestoreConfigFile="$(Build.SourcesDirectory)\.pipelines\release-nuget.config"
               beforeBuildSteps:
@@ -99,11 +105,35 @@ extends:
                 # Prepare the localizations and telemetry config before the release build
                 - template: .pipelines/v2/templates/steps-fetch-and-prepare-localizations.yml@self
 
-                - script: |
-                    call nuget.exe restore -configFile .pipelines/release-nuget.config -PackagesDirectory . .pipelines/packages.config || exit /b 1
-                    move /Y "Microsoft.PowerToys.Telemetry.2.0.2\build\include\TraceLoggingDefines.h" "src\common\Telemetry\TraceLoggingDefines.h" || exit /b 1
-                    move /Y "Microsoft.PowerToys.Telemetry.2.0.2\build\include\TelemetryBase.cs" "src\common\Telemetry\TelemetryBase.cs" || exit /b 1
+                - pwsh: |-
+                    $ErrorActionPreference = 'Stop'
+                    $PSNativeCommandUseErrorActionPreference = $true
+                    & nuget.exe restore -configFile .pipelines/release-nuget.config -PackagesDirectory . .pipelines/packages.config
+                    Move-Item -Force -Verbose "Microsoft.PowerToys.Telemetry.*\build\include\TraceLoggingDefines.h" "src\common\Telemetry\TraceLoggingDefines.h"
+                    Move-Item -Force -Verbose "Microsoft.PowerToys.Telemetry.*\build\include\TelemetryBase.cs" "src\common\Telemetry\TelemetryBase.cs"
                   displayName: Emplace telemetry files
+
+      - stage: Build_SDK
+        displayName: Build SDK
+        dependsOn: []
+        jobs:
+          - template: .pipelines/v2/templates/job-build-sdk.yml@self
+            parameters:
+              pool:
+                name: SHINE-INT-L
+                image: SHINE-VS17-Latest
+                os: windows
+              official: true
+              codeSign: true
+              signingIdentity:
+                serviceName: $(SigningServiceName)
+                appId: $(SigningAppId)
+                tenantId: $(SigningTenantId)
+                akvName: $(SigningAKVName)
+                authCertName: $(SigningAuthCertName)
+                signCertName: $(SigningSignCertName)
+                useManagedIdentity: $(SigningUseManagedIdentity)
+                clientId: $(SigningOriginalClientId)
 
       - stage: Publish
         displayName: Publish
@@ -113,5 +143,7 @@ extends:
             parameters:
               versionNumber: ${{ parameters.versionNumber }}
               includePublicSymbolServer: ${{ parameters.publishSymbolsToPublic }}
+              ${{ if ne(parameters.publishSymbolsToPublic, true) }}:
+                symbolExpiryTime: 10 # For private builds, expire symbols within 10 days. The default is 100 years.
               subscription: $(SymbolPublishingServiceConnection)
               symbolProject: $(SymbolPublishingProject)

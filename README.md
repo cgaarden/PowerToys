@@ -11,14 +11,15 @@ Microsoft PowerToys is a set of utilities for power users to tune and streamline
 |              | Current utilities: |              |
 |--------------|--------------------|--------------|
 | [Advanced Paste](https://aka.ms/PowerToysOverview_AdvancedPaste) | [Always on Top](https://aka.ms/PowerToysOverview_AoT) | [PowerToys Awake](https://aka.ms/PowerToysOverview_Awake) |
-| [Command Not Found](https://aka.ms/PowerToysOverview_CmdNotFound) | [Color Picker](https://aka.ms/PowerToysOverview_ColorPicker) | [Crop And Lock](https://aka.ms/PowerToysOverview_CropAndLock) |
-| [Environment Variables](https://aka.ms/PowerToysOverview_EnvironmentVariables) | [FancyZones](https://aka.ms/PowerToysOverview_FancyZones) | [File Explorer Add-ons](https://aka.ms/PowerToysOverview_FileExplorerAddOns) |
-| [File Locksmith](https://aka.ms/PowerToysOverview_FileLocksmith) | [Hosts File Editor](https://aka.ms/PowerToysOverview_HostsFileEditor) | [Image Resizer](https://aka.ms/PowerToysOverview_ImageResizer) |
-| [Keyboard Manager](https://aka.ms/PowerToysOverview_KeyboardManager) | [Mouse utilities](https://aka.ms/PowerToysOverview_MouseUtilities) | [Mouse Without Borders](https://aka.ms/PowerToysOverview_MouseWithoutBorders) |
-| [New+](https://aka.ms/PowerToysOverview_NewPlus) | [Peek](https://aka.ms/PowerToysOverview_Peek) | [Paste as Plain Text](https://aka.ms/PowerToysOverview_PastePlain) |
-| [PowerRename](https://aka.ms/PowerToysOverview_PowerRename) | [PowerToys Run](https://aka.ms/PowerToysOverview_PowerToysRun) | [Quick Accent](https://aka.ms/PowerToysOverview_QuickAccent) |
-| [Registry Preview](https://aka.ms/PowerToysOverview_RegistryPreview) | [Screen Ruler](https://aka.ms/PowerToysOverview_ScreenRuler) | [Shortcut Guide](https://aka.ms/PowerToysOverview_ShortcutGuide) |
-| [Text Extractor](https://aka.ms/PowerToysOverview_TextExtractor) | [Workspaces](https://aka.ms/PowerToysOverview_Workspaces) | [ZoomIt](https://aka.ms/PowerToysOverview_PowerToysOverview_ZoomIt) |
+| [Color Picker](https://aka.ms/PowerToysOverview_ColorPicker) | [Command Not Found](https://aka.ms/PowerToysOverview_CmdNotFound) | [Command Palette](https://aka.ms/PowerToysOverview_CmdPal) |
+| [Crop And Lock](https://aka.ms/PowerToysOverview_CropAndLock) | [Environment Variables](https://aka.ms/PowerToysOverview_EnvironmentVariables) | [FancyZones](https://aka.ms/PowerToysOverview_FancyZones) |
+| [File Explorer Add-ons](https://aka.ms/PowerToysOverview_FileExplorerAddOns) | [File Locksmith](https://aka.ms/PowerToysOverview_FileLocksmith) | [Hosts File Editor](https://aka.ms/PowerToysOverview_HostsFileEditor) |
+| [Image Resizer](https://aka.ms/PowerToysOverview_ImageResizer) | [Keyboard Manager](https://aka.ms/PowerToysOverview_KeyboardManager) | [Mouse utilities](https://aka.ms/PowerToysOverview_MouseUtilities) |
+| [Mouse Without Borders](https://aka.ms/PowerToysOverview_MouseWithoutBorders) | [New+](https://aka.ms/PowerToysOverview_NewPlus) | [Paste as Plain Text](https://aka.ms/PowerToysOverview_PastePlain) |
+| [Peek](https://aka.ms/PowerToysOverview_Peek) | [PowerRename](https://aka.ms/PowerToysOverview_PowerRename) | [PowerToys Run](https://aka.ms/PowerToysOverview_PowerToysRun) |
+| [Quick Accent](https://aka.ms/PowerToysOverview_QuickAccent) | [Registry Preview](https://aka.ms/PowerToysOverview_RegistryPreview) | [Screen Ruler](https://aka.ms/PowerToysOverview_ScreenRuler) |
+| [Shortcut Guide](https://aka.ms/PowerToysOverview_ShortcutGuide) | [Text Extractor](https://aka.ms/PowerToysOverview_TextExtractor) | [Workspaces](https://aka.ms/PowerToysOverview_Workspaces) |
+| [ZoomIt](https://aka.ms/PowerToysOverview_ZoomIt) |
 
 ## Installing and running Microsoft PowerToys
 
@@ -34,19 +35,19 @@ Microsoft PowerToys is a set of utilities for power users to tune and streamline
 Go to the [Microsoft PowerToys GitHub releases page][github-release-link] and click on `Assets` at the bottom to show the files available in the release. Please use the appropriate PowerToys installer that matches your machine's architecture and install scope. For most, it is `x64` and per-user.
 
 <!-- items that need to be updated release to release -->
-[github-next-release-work]: https://github.com/microsoft/PowerToys/issues?q=is%3Aissue+milestone%3A%22PowerToys+0.88%22
-[github-current-release-work]: https://github.com/microsoft/PowerToys/issues?q=is%3Aissue+milestone%3A%22PowerToys+0.87%22
-[ptUserX64]: https://github.com/microsoft/PowerToys/releases/download/v0.87.1/PowerToysUserSetup-0.87.1-x64.exe 
-[ptUserArm64]: https://github.com/microsoft/PowerToys/releases/download/v0.87.1/PowerToysUserSetup-0.87.1-arm64.exe 
-[ptMachineX64]: https://github.com/microsoft/PowerToys/releases/download/v0.87.1/PowerToysSetup-0.87.1-x64.exe 
-[ptMachineArm64]: https://github.com/microsoft/PowerToys/releases/download/v0.87.1/PowerToysSetup-0.87.1-arm64.exe
+[github-next-release-work]: https://github.com/microsoft/PowerToys/issues?q=is%3Aissue+milestone%3A%22PowerToys+0.92%22
+[github-current-release-work]: https://github.com/microsoft/PowerToys/issues?q=is%3Aissue+milestone%3A%22PowerToys+0.91%22
+[ptUserX64]: https://github.com/microsoft/PowerToys/releases/download/v0.91.1/PowerToysUserSetup-0.91.1-x64.exe 
+[ptUserArm64]: https://github.com/microsoft/PowerToys/releases/download/v0.91.1/PowerToysUserSetup-0.91.1-arm64.exe 
+[ptMachineX64]: https://github.com/microsoft/PowerToys/releases/download/v0.91.1/PowerToysSetup-0.91.1-x64.exe 
+[ptMachineArm64]: https://github.com/microsoft/PowerToys/releases/download/v0.91.1/PowerToysSetup-0.91.1-arm64.exe
  
 |  Description   | Filename | sha256 hash |
 |----------------|----------|-------------|
-| Per user - x64       | [PowerToysUserSetup-0.87.1-x64.exe][ptUserX64] | 8EFAF47ED00BF230D2C2CC3CB6765C903A6A47E0AAED0BBB329CEF918207B486 |
-| Per user - ARM64     | [PowerToysUserSetup-0.87.1-arm64.exe][ptUserArm64] | 212FC8055789BD2DC4DE554B9AEE291A9C077907E263A302939266263A9D512B |
-| Machine wide - x64   | [PowerToysSetup-0.87.1-x64.exe][ptMachineX64] | 69AD65DDAC6436AEF292D2CC6AB1530021CE98083CB3F5FD3380A52A3B0DBB9A |
-| Machine wide - ARM64 | [PowerToysSetup-0.87.1-arm64.exe][ptMachineArm64] | AEC9F1D02F1E23F0C1FCFDF95C337C962902394F44C0568012DF78BEDB45CF19 |
+| Per user - x64       | [PowerToysUserSetup-0.91.1-x64.exe][ptUserX64] | 42EA4A3E8C79A5456476D19E72B3E2AB9393A89C4DC7442EB7EE5A1E3490D38A |
+| Per user - ARM64     | [PowerToysUserSetup-0.91.1-arm64.exe][ptUserArm64] | F3F433FE04049F9197411D792AADEBF34E3BE7FE16327BD8B73D2A046ED8BAF6 |
+| Machine wide - x64   | [PowerToysSetup-0.91.1-x64.exe][ptMachineX64] | EC4BC3A8625775866B0ED4577CCF83E6EC7B1A0AD267379DDBAF4FE49C7B5BDD |
+| Machine wide - ARM64 | [PowerToysSetup-0.91.1-arm64.exe][ptMachineArm64] | 9CB8911008420D0E446AE3D5CE365E447FA4DF9DCF9337F3A80F933C00FC3689 |
 
 This is our preferred method.
 
@@ -92,119 +93,168 @@ For guidance on developing for PowerToys, please read the [developer docs](/doc/
 
 Our [prioritized roadmap][roadmap] of features and utilities that the core team is focusing on.
 
-### 0.87 - December 2024 Update
+### 0.91 - May 2025 Update
 
-In this release, we focused on new features, stability, and improvements.
+In this release, we focused on new features, stability, and automation.
 
-**Highlights**
+**✨Highlights**
 
- - Advanced Paste has a new feature called "Advanced AI" that uses Semantic Kernel to allow setting up the orchestration of sequential clipboard transformations.
- - Workspaces supports Progressive Web Applications.
- - Workspaces has a new feature to move existing windows instead of creating new ones.
- - Mouse Jump added new settings to allow customization of screens pop-up. Thanks [@mikeclayton](https://github.com/mikeclayton)!
- - New+ now works on Windows 10. Thanks [@cgaarden](https://github.com/cgaarden)!
- - Quick Accent allows selecting the character sets that should appear on the UI. Thanks [@Sirozha1337](https://github.com/Sirozha1337)!
+ - We focused on greatly improving Command Palette's performance and fixing a large amount of bugs. Some new features we've added are:
+ - Added the ability for Command Palette to search any file using a fallback command.
+ - Added the ability to make the Command Palette global hotkey a low-level keyboard hook.
+ - Added open URL fallback command for the WebSearch extension, enabling users to directly open URLs in the browser from Command Palette.
+ - You can now define custom formats in the Date and Time plugins of PT Run and Command Palette. Thanks [@htcfreek](https://github.com/htcfreek)!
 
 ### Advanced Paste
 
- - Added a new optional feature allowing using AI to set up the orchestration of sequential clipboard transformations.
+ - Fixed an issue where Advanced Paste failed to create the OCR engine for certain English language tags (e.g., en-CA) by initializing the OCR engine with the user profile language. Thanks [@cryolithic](https://github.com/cryolithic)!
 
-### Awake
+### Color Picker
 
- - Initialization, logging and tray icon setup improvements. Thanks [@dend](https://github.com/dend)!
+ - Fixed an issue where a resource leak caused hangs or crashes by properly disposing of the Graphics object. Thanks [@dcog989](https://github.com/dcog989)!
+ - Fixed an issue where Color Picker exited on Backspace keypress by ensuring it only closes when focused and aligning Escape/Backspace behavior. Thanks [@PesBandi](https://github.com/PesBandi)!
+ - Added support for Oklab and Oklch color formats in Color Picker. Thanks [@lemonyte](https://github.com/lemonyte)!
 
-### File Explorer add-ons
+### Command Not Found
 
- - Preview Pane extensions now use the PerMonitorV2 DPI mode to fix errors on different scales. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
+ - Updated the WinGet Command Not Found script to only enable the experimental features if they actually exist.
 
-### Keyboard Manager.
+### Command Palette
 
- - Added labels to the IME On, IME Off keys. Thanks [@kit494way](https://github.com/kit494way)!
- - Fixed an issue that caused the Shift key to remain stuck if a numpad key was mapped to the Shift key.
+ - Updated bug template to include Command Palette module.
+ - Fixed an issue where the toast window was not scaled for DPI, causing layout issues under display scaling.
+ - Fixed an issue where Up/Down keyboard navigation didn't move selection when caret was at position 0, and add continuous navigation like PT Run v1. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
+ - Updated the Time and Date extension code to simplify it and improve clarity.
+ - Fixed an issue where capitalization in the command causes failure when trying to go to the mouse pointer, resolved by adjusting the command to lowercase.
+ - Added open URL fallback command for the WebSearch extension, enabling users to directly open URLs in the browser from Command Palette. Thanks [@htcfreek](https://github.com/htcfreek)!
+ - Added setting to enable/disable system tray icon in CmdPal and align terminology with Windows 11. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
+ - Fixed an alias update issue by removing the old alias when a new one is set.
+ - Resolved GitHub casing conflict by migrating Exts and exts into a new ext directory, ensuring consistent structure across platforms and preventing path fragmentation.
+ - Fix an issue where the 'Create New Extension' command generated empty file names.
+ - Added the ability to make the global hotkey a low-level keyboard hook.
+ - Added support for JUMBO thumbnails, enabling access to high-resolution icons.
+ - Fixed crashes when CmdPal auto-hid itself while an MSAL dialog was opened, by preventing CmdPal from hiding if it's disabled.
+ - Added support for immediately selecting search text when a page is loaded.
+ - Fixed a bug where extension settings pages failed to reload on reopen by updating the settings form when extension settings are saved.
+ - Fixed an issue where the Command Palette failed to launch from the runner.
+ - Refactored and ported the PowerToys Run v1 calculator logic into Command Palette, added settings support, and improved fallback behavior.
+ - Re-added support for list item keyboard shortcuts.
+ - Enhanced accessibility in Command Palette by adding proper labels, refining animations, improving localization, and fixed a11y related issues.
+ - Ported custom format support to the Time and Date plugin, reordered and cleaned up settings, improved error messaging, and fixed edge-case crashes for more robust and user-friendly behavior. Thanks [@htcfreek](https://github.com/htcfreek)!
+ - Added fallback item for system command.
+ - Fixed a bug in Windows System Command where the key prompt incorrectly displayed "Empty" for the "Open Recycle Bin" action. Thanks [@jironemo](https://github.com/jironemo)!
+ - Fixed an issue where the 'more commands' list showed commands that shouldn't be visible. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
+ - Fixed an issue where the details view in Command Palette displayed an oversized icon and misaligned text, aligning it with Windows Search behavior.
+ - Fixed a bug where empty screen content and command bar commands were cut off when using long labels, ensuring proper layout and visibility.
+ - Improved CmdPal’s WinGet integration by fixing version display for installed packages, enabling updates with icons, and migrating the preview winget API to a stable version.
+ - Fixed a bug where commands for ContentPage didn't update until after exit, by ensuring context menus are fully initialized when they change.
+ - Added fallback support to the TimeDate extension, enabling direct date/time queries without pre-selecting the command.
+ - Added import of Common.Dotnet.AotCompatibility.props across multiple CmdPal project files to enhance AOT compilation support.
+ - Fixed a crash in CmdPal settings caused by a null HotKey when settings.json is missing or lacks a defined hotkey. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
+ - Added support for filterable, nested context menus in CmdPal, including a search box to maintain focus behavior.
+ - Refactored CmdPal classes to improve JSON serialization and introduced new serialization contexts for better performance and maintainability.
+ - Added support for ahead-of-time (AoT) compilation.
+ - Added retry mechanism for CmdPal launch.
+ - Removed some unused files from CmdPal.Common to simplify codebase and facilitate marking it as AoT-compatible.
+ - Fixed a bug where a race condition in the update of SearchText caused the cursor in the input box to automatically jump to the end of the line, ensuring SearchText is only updated after it has actually been changed.
+ - Added support for searching any file in fallback command.
+ - Cleaned up AoT-related code to prevent duplicate operations during testing.
+ - Reduced CmdPal load time by parallelizing extension startup and adding timeouts to prevent misbehaving extensions from blocking others.
+ - Enhanced UI behavior by dismissing the details pane when the list gets emptied, avoiding inconsistent visual states.
+ - Added support to unset the fallback command in CmdPal when no matching command is found, ensuring cleaner reload behavior.
+ - Fixed a leak in the CmdPal extension template by addressing improper ComServer use.
+ - Prevented CmdPal window from maximizing on title bar double-click to maintain intended window behavior. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
+ - Fixed an issue where the Settings UI launched too small by making window dimensions DPI-aware and enforcing minimum width and height using WinUIEx.
+ - Fixed white flash and one-time animation issues in CmdPal by cloaking the window instead of hiding it.
+ - Fixed a bug where all extension settings were fetched on startup by lazy-loading extension settings, reducing initialization overhead.
+ - Added support for protecting CmdPal from crashes on Adaptive Card parse failure.
+ - Replaced shell:AppsFolder with URI activation in CmdPal to improve reliability.
+ - Added ability to open CmdPal settings from PowerToys Settings.
+ - Added ability for CmdPal to observe and dynamically update extension details by tracking property changes on the selected item.
+ - Bumped the toolkit version used in the CmdPal extension template to 0.2.0.
 
-### Monaco Preview
+### Image Resizer
 
- - Added support for .ahk files to be shown as a plaintext file in Peek and File Explorer add-ons. Thanks [@daverayment](https://github.com/daverayment)!
- - Added support for .ion files to be shown as a plaintext file in Peek and File Explorer add-ons. Thanks [@octastylos-pseudodipteros](https://github.com/octastylos-pseudodipteros)!
- - Added support for syntax highlighting for .srt files in Peek and File Explorer add-ons. Thanks [@PesBandi](https://github.com/PesBandi)!
+ - Fixed an issue where deleting an Image Resizer preset removed the wrong preset.
 
-### Mouse Jump
+### Keyboard Manager
 
- - Allow customizing the appearance of the UI of the Mouse Jump pop-up. Thanks [@mikeclayton](https://github.com/mikeclayton)!
+ - Fixed an issue where a modifier key, when set without specifying left or right, would get stuck due to incorrect key handling, by tracking the pressed keys and sending the correct key accordingly. Thanks [@mantaionut](https://github.com/mantaionut)!
 
-### New+
+### PowerRename
 
- - Added support for Windows 10. Thanks [@cgaarden](https://github.com/cgaarden)!
- - Fixed an issue causing the renaming of new files to not trigger some times. Thanks [@cgaarden](https://github.com/cgaarden)!
- - Updated the New+ icons. Thanks [@niels9001](https://github.com/niels9001)!
-
-### Peek
-
- - Peek now checks local capabilities to decide what image formats Image Previewer is able to support. Thanks [@daverayment](https://github.com/daverayment)!
- - Fixed an issue causing the Code Files Previewer to not load correctly under certain conditions. Thanks [@daverayment](https://github.com/daverayment)!
- - Refactored, improved and fixed logging when loading the user settings file. Thanks [@daverayment](https://github.com/daverayment)!
+ - Enhanced PowerRename's time formatting capabilities by adding 12-hour time format patterns with AM/PM support. Thanks [@bitmap4](https://github.com/bitmap4)!
 
 ### PowerToys Run
 
- - Added a scoring function for proper ordering of the WindowWalker plugin results. Thanks [@andbartol](https://github.com/andbartol)!
- - Added UUIDv7 support to the ValueGenerator plugin. Thanks [@frederik-hoeft](https://github.com/frederik-hoeft)!
- - The calculator plugin now allows scientific notation numbers with a lowercase 'e'. Thanks [@PesBandi](https://github.com/PesBandi)!
- - Ported the UI from WPF-UI to .NET 9 WPF, to fix "Desktop composition is disabled" crashes.
+ - Added support for custom formats in the "Time and Date" plugin and improves error messages for invalid input formats. Thanks [@htcfreek](https://github.com/htcfreek)!
+ - Fix two crashes: one for WFT on very early dates and another for calculating the week of the month on very late dates (e.g., 31.12.9999), and reorder UI settings. Thanks [@htcfreek](https://github.com/htcfreek)!
+ - Fix an issue where capitalization in the command causes failure when trying to go to the mouse pointer, resolved by adjusting the command to lowercase.
+ - Added version details to plugin error messages for 'Loading error' and 'Init error'. Thanks [@htcfreek](https://github.com/htcfreek)!
+ - Enhanced result model by adding support for preventing usage-based ordering, giving plugin developers greater control over sorting behavior. Thanks [@CoreyHayward](https://github.com/CoreyHayward) and [@htcfreek](https://github.com/htcfreek)!
 
 ### Quick Accent
 
- - Added a setting to allow selecting which character sets to show. Thanks [@Sirozha1337](https://github.com/Sirozha1337)!
+ - Updated the letter mapping in GetDefaultLetterKeyEPO, replacing "ǔ" with "ŭ" for the VK_U key to accurately reflect Esperanto phonetics. Thanks [@OlegKharchevkin](https://github.com/OlegKharchevkin)!
+ - Fixed an issue where Quick Accent did not work properly when using the on-screen keyboard. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
 
-### Screen Ruler
+### Registry Preview
 
- - Added a Setting to also allow showing measurements in inches, centimeters or millimeters. Thanks [@Sophanatprime](https://github.com/Sophanatprime)!
+ - Enhanced Registry Preview to support pasting registry keys and values without manually writing the file header, and added a new button for resetting the app. Thanks [@htcfreek](https://github.com/htcfreek)!
 
 ### Settings
 
- - Fixed an issue causing all the links to milestones in the "What's new?" OOBE page to point to the same milestone.
- - Removed extra space from the Welcome page. Thanks [@agarwalishita](https://github.com/agarwalishita)!
- - Updated left navigation bar icons. Thanks [@niels9001](https://github.com/niels9001)!
- - Fixed accessibility issues in the dashboard page. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
+ - Fix an issue where the Settings app randomly showed a blank icon in the taskbar by deferring icon assignment until the window is activated.
+ - Added the ability to maximize the "What's New" window for a more comfortable reading experience.
 
 ### Workspaces
 
- - Added support for Progressive Web Applications to Workspaces.
- - Implemented a feature to move existing windows instead of creating new ones.
- - Fixed a crash when opening the workspaces editor that was caused by passing incorrect encoder parameters when saving Bitmap files.
- - Workspaces editor position is now saved so that we can start it at the same position when we open it again.
- - Fixed an issue causing many instances of the same application to be put in the same position instead of the intended position due to timer issues.
- - Fixed detection of exact application version when many versions of the same application are installed.
+ - Fixed bugs where Steam games were not captured or launched correctly by updating window filtering and integrating Steam URL protocol handling.
 
 ### Documentation
 
- - Improved language in CONTRIBUTE.md. Thanks [@sanskaarz](https://github.com/sanskaarz)!
- - Added Bilibili plugin mention to thirdPartyRunPlugins.md. Thanks [@Whuihuan](https://github.com/Whuihuan)!
- - Added CanIUse and TailwindCSS plugins mention to thirdPartyRunPlugins.md. Thanks [@skttl](https://github.com/skttl)!
- - Added HttpStatusCodes plugin mention to thirdPartyRunPlugins.md. Thanks [@grzhan](https://github.com/grzhan)!
- - Updated COMMUNITY.md with more contributors.
+ - Added QuickNotes to the third-party plugins documentation for PowerToys Run. Thanks [@ruslanlap](https://github.com/ruslanlap)!
+ - Added Weather and Pomodoro plugins to the PowerToys Run third-party plugin documentation. Thanks [@ruslanlap](https://github.com/ruslanlap)!
+ - Added the Linear plugin to PowerToys Run's third-party plugin documentation. Thanks [@vednig](https://github.com/vednig)!
+ - Fixed formatting issues in documentation files and updated contributor and team member information. Thanks [@DanielEScherzer](https://github.com/DanielEScherzer) and [@RokyZevon](https://github.com/RokyZevon)!
 
 ### Development
 
- - Upgraded to .NET 9. Thanks [@snickler](https://github.com/snickler)!
- - Fixed building on Visual Studio 17.12.
- - Upgraded the System.IO.Abstractions dependency to 21.0.29. Thanks [@davidegiacometti](https://github.com/davidegiacometti)!
- - Upgraded the WindowsAppSDK dependency to 1.6.241114003. Thanks [@shuaiyuanxx](https://github.com/shuaiyuanxx)!
- - Upgraded the MSTest dependency to 3.6.3. Thanks [@Youssef1313](https://github.com/Youssef1313)!
- - Upgraded the check-spelling CI dependency to 0.0.24 and fixed related spell checking issues. Thanks [@jsoref](https://github.com/jsoref)!
- - Removed duplicate names from the spellcheck allowed names file. Thanks [@htcfreek](https://github.com/htcfreek)!
- - Improved logging of asynchronous methods call stacks when logging an error.
- - Created a MSBuild props file to be imported by other projects to enable AOT support.
- - Made the Peek utility source code AOT compatible.
- - Updated .editorconfig rules to relax squiggly IDE errors in Visual Studio 17.12. Thanks [@snickler](https://github.com/snickler)!
- - Moved Xaml.Styler from the root to the src folder.
+ - Updated GitHub Action to install .NET 9 for MSStore release support.
+ - Updated version placeholder in bug_report.yml to prevent incorrect v0.70.0 versioning in issue reports.
+ - Updated GitHub Action to upgrade actions/setup-dotnet from version 3 to version 4 for MSStore release.
+ - Added securityContext to WinGet configuration files, allowing invocation from user context and prompting a single UAC for elevated resources in a separate process. Thanks [@mdanish-kh](https://github.com/mdanish-kh)!
+ - Changed log file extensions from .txt to .log to support proper file associations and tooling compatibility, and added logs for Workspace. Thanks [@benwa](https://github.com/benwa)!
+ - Upgraded testing framework dependencies and aligned package versions across components.
+ - Upgraded dependencies to fix vulnerabilities.
+ - Enhanced repository security by pinning GitHub Actions and Docker tags to immutable full-length commits and integrating automated dependency vulnerability scanning via Dependency Review Workflow. Thanks [@Nick2bad4u](https://github.com/Nick2bad4u)!
+ - Upgraded Boost dependencies to a newer version.
+ - Upgraded toolkit to the latest version, suppressed AoT-related warnings.
+ - Fixed an issue where missing signing for newly added files caused build failures.
+ - Update release pipeline to prevent publishing private symbols for 100 years.
+ - Introduced fuzzing for PowerRename to improve reliability and added setup guidance for extending fuzzing to other C++ modules.
+ - Added centralized pre-creation of generated folders for all .csproj projects to prevent build failures.
+ - Updated WinAppSDK to the latest 1.7 version.
+ - Upgraded Boost dependencies to the latest version for the PowerRename Fuzzing project.
+ - Updated the ADO area path in tsa.json to resolve TSA pipeline errors caused by a deprecated path.
+ - Initiated AoT support for CmdPal with foundational work in progress.
+  
+### Tool/General
 
-#### What is being planned for version 0.88
+ - Added support for automating bug report creation by generating a pre-filled GitHub issue URL with system and diagnostic information. Thanks [@donlaci](https://github.com/donlaci)!
+ - Added scripts to locally build the installer, ensuring the CmdPal can also be launched in a local environment.
+ - Removed export PFX logic to eliminate hardcoded password usage and resolve PSScriptAnalyzer security warning.
+ - Added PowerShell script and CI integration to enforce consistent use of Common.Dotnet.CsWinRT.props across all C# projects under the src folder.
+   
+### What is being planned for version 0.92
 
-For [v0.88][github-next-release-work], we'll work on the items below:
+For [v0.92][github-next-release-work], we'll work on the items below:
 
+ - Continued Command Palette polish
+ - New UI Automation tests
+ - Working on installer upgrades
+ - Upgrading Keyboard Manager's editor UI
  - Stability / bug fixes
- - New module: File Actions Menu
- - Integrate Sysinternals ZoomIt
 
 ## PowerToys Community
 

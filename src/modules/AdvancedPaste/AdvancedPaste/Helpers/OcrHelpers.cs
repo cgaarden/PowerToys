@@ -4,6 +4,7 @@
 
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Windows.Globalization;
@@ -15,11 +16,23 @@ namespace AdvancedPaste.Helpers;
 
 public static class OcrHelpers
 {
-    public static async Task<string> ExtractTextAsync(SoftwareBitmap bitmap)
+    public static async Task<string> ExtractTextAsync(SoftwareBitmap bitmap, CancellationToken cancellationToken)
     {
-        var ocrLanguage = GetOCRLanguage() ?? throw new InvalidOperationException("Unable to determine OCR language");
+        var ocrLanguage = GetOCRLanguage();
+        cancellationToken.ThrowIfCancellationRequested();
 
-        var ocrEngine = OcrEngine.TryCreateFromLanguage(ocrLanguage) ?? throw new InvalidOperationException("Unable to create OCR engine");
+        OcrEngine ocrEngine;
+        if (ocrLanguage is not null)
+        {
+            ocrEngine = OcrEngine.TryCreateFromLanguage(ocrLanguage) ?? throw new InvalidOperationException("Unable to create OCR engine from specified language");
+        }
+        else
+        {
+            ocrEngine = OcrEngine.TryCreateFromUserProfileLanguages() ?? throw new InvalidOperationException("Unable to create OCR engine from user profile language");
+        }
+
+        cancellationToken.ThrowIfCancellationRequested();
+
         var ocrResult = await ocrEngine.RecognizeAsync(bitmap);
 
         return string.IsNullOrWhiteSpace(ocrResult.Text)

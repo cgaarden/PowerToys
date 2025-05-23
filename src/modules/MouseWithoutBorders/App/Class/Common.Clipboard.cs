@@ -153,7 +153,7 @@ namespace MouseWithoutBorders
 
                         string filePath = stringData;
 
-                        _ = Common.ImpersonateLoggedOnUserAndDoSomething(() =>
+                        _ = Launch.ImpersonateLoggedOnUserAndDoSomething(() =>
                         {
                             if (File.Exists(filePath) || Directory.Exists(filePath))
                             {
@@ -431,7 +431,7 @@ namespace MouseWithoutBorders
                 if (!IsConnectedByAClientSocketTo(remoteMachine))
                 {
                     Logger.Log($"No potential inbound connection from {MachineName} to {remoteMachine}, ask for a push back instead.");
-                    ID machineId = MachinePool.ResolveID(remoteMachine);
+                    ID machineId = MachineStuff.MachinePool.ResolveID(remoteMachine);
 
                     if (machineId != ID.NONE)
                     {
@@ -579,7 +579,7 @@ namespace MouseWithoutBorders
                 {
                     if (postAct.Equals("desktop", StringComparison.OrdinalIgnoreCase))
                     {
-                        _ = ImpersonateLoggedOnUserAndDoSomething(() =>
+                        _ = Launch.ImpersonateLoggedOnUserAndDoSomething(() =>
                         {
                             savingFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\MouseWithoutBorders\\";
 
@@ -696,7 +696,7 @@ namespace MouseWithoutBorders
                                 Path.GetFileName(fileName),
                                 remoteMachine);
 
-                            _ = ImpersonateLoggedOnUserAndDoSomething(() =>
+                            _ = Launch.ImpersonateLoggedOnUserAndDoSomething(() =>
                             {
                                 ProcessStartInfo startInfo = new();
                                 startInfo.UseShellExecute = true;
@@ -840,7 +840,7 @@ namespace MouseWithoutBorders
 
                         Logger.LogDebug($"{nameof(ShakeHand)}: Connection from {name}:{package.Src}");
 
-                        if (Common.MachinePool.ResolveID(name) == package.Src && Common.IsConnectedTo(package.Src))
+                        if (MachineStuff.MachinePool.ResolveID(name) == package.Src && Common.IsConnectedTo(package.Src))
                         {
                             clientPushData = package.Type == PackageType.ClipboardPush;
                             postAction = package.PostAction;
