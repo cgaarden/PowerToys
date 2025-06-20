@@ -5,6 +5,14 @@
 class MetadataHelper 
 {
 public:
+    // Ratings related
     static unsigned int GetFileRating(const std::wstring& file_path);
-    static std::pair<double, bool> GetAverageRatingAndUniformFlag(const std::vector<std::wstring>& file_paths);
+    static std::pair<bool, double> GetRatingUniformityAndAverageRating(const std::vector<std::wstring>& file_paths);
+    static void SetRatingForMultipleFiles(const std::vector<std::wstring>& file_paths, const unsigned int rating);
+    static void RemoveRatingForMultipleFiles(const std::vector<std::wstring>& file_paths);
+
+    // Tags related
+    static std::pair<bool, std::vector<std::wstring>> GetTagsUniformityAndTagsFromFirstFile(const std::vector<std::wstring>& file_paths);
+    static void AppendTagsForMultipleFiles(const std::vector<std::wstring>& file_paths, const std::vector<std::wstring>& tags_to_append);
+    static void RemoveAllTagsForMultipleFiles(const std::vector<std::wstring>& file_paths);
 };

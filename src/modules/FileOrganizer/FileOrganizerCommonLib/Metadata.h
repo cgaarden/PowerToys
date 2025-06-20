@@ -13,16 +13,23 @@ struct MetaData
 class MetadataReadWrite
 {
 public:
+	// General metadata 
 	~MetadataReadWrite();
-	void Open(const std::wstring& file_path);
+    bool Open(const std::wstring& file_path) noexcept;
+	void WriteChanges();
+	void Close() noexcept;
+
+	// Rating related
 	unsigned int GetRating() const;
 	void SetRating(const unsigned int rating);
 	void RemoveRating();
+
+	// Tagging related
 	std::vector<std::wstring> GetTags() const;
-	void SetTags(const std::vector<std::wstring>& tags);
+    std::vector<std::wstring> GetSortedTags() const;
+    void SetTags(const std::vector<std::wstring>& tags);
 	void AppendTags(const std::vector<std::wstring>& tags);
-	void WriteChanges();
-	void Close();
+    void RemoveAllTags();
 
 protected:
 	IPropertyStore* raw_property_store; // Ensure IPropertyStore is defined

@@ -727,6 +727,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PowerRename.FuzzingTest", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculatorEngineCommon", "src\common\CalculatorEngineCommon\CalculatorEngineCommon.vcxproj", "{2CF78CF7-8FEB-4BE1-9591-55FA25B48FC6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileOrganizer.Common.Lib", "src\modules\FileOrganizer\FileOrganizerCommonLib\FileOrganizerCommonLib.vcxproj", "{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -2653,14 +2655,6 @@ Global
 		{2694E2FB-DCD5-4BFF-A418-B6C3C7CE3B8E}.Release|ARM64.ActiveCfg = Release|ARM64
 		{2694E2FB-DCD5-4BFF-A418-B6C3C7CE3B8E}.Release|x64.ActiveCfg = Release|x64
 		{2694E2FB-DCD5-4BFF-A418-B6C3C7CE3B8E}.Release|x64.Build.0 = Release|x64
-		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Debug|ARM64.ActiveCfg = Debug|ARM64
-		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Debug|ARM64.Build.0 = Debug|ARM64
-		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Debug|x64.ActiveCfg = Debug|x64
-		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Debug|x64.Build.0 = Debug|x64
-		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Release|ARM64.ActiveCfg = Release|ARM64
-		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Release|ARM64.Build.0 = Release|ARM64
-		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Release|x64.ActiveCfg = Release|x64
-		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Release|x64.Build.0 = Release|x64
 		{2CF78CF7-8FEB-4BE1-9591-55FA25B48FC6}.Debug|ARM64.ActiveCfg = Debug|ARM64
 		{2CF78CF7-8FEB-4BE1-9591-55FA25B48FC6}.Debug|ARM64.Build.0 = Debug|ARM64
 		{2CF78CF7-8FEB-4BE1-9591-55FA25B48FC6}.Debug|x64.ActiveCfg = Debug|x64
@@ -2669,6 +2663,14 @@ Global
 		{2CF78CF7-8FEB-4BE1-9591-55FA25B48FC6}.Release|ARM64.Build.0 = Release|ARM64
 		{2CF78CF7-8FEB-4BE1-9591-55FA25B48FC6}.Release|x64.ActiveCfg = Release|x64
 		{2CF78CF7-8FEB-4BE1-9591-55FA25B48FC6}.Release|x64.Build.0 = Release|x64
+		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Debug|ARM64.Build.0 = Debug|ARM64
+		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Debug|x64.ActiveCfg = Debug|x64
+		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Debug|x64.Build.0 = Debug|x64
+		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Release|ARM64.ActiveCfg = Release|ARM64
+		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Release|ARM64.Build.0 = Release|ARM64
+		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Release|x64.ActiveCfg = Release|x64
+		{7055764F-FC17-43CC-88A5-8A44DAF0DD2E}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

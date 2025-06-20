@@ -1,22 +1,22 @@
 #include "pch.h"
 #include "Metadata.h"
-#include <ShlObj.h>
-#include <memory>
-#include <propkey.h>
 #include <cmath>
+#include <cwctype>
+#include <memory>	
+#include <propkey.h>
+#include <ShlObj.h>
+#include <stdexcept>
 
 MetadataReadWrite::~MetadataReadWrite()
 {
 	Close();
 }
 
-void MetadataReadWrite::Open(const std::wstring& file_path)
+bool MetadataReadWrite::Open(const std::wstring& file_path) noexcept
 {
-	HRESULT result = SHGetPropertyStoreFromParsingName(file_path.c_str(), NULL, GPS_READWRITE, IID_PPV_ARGS(&raw_property_store));
-	if (FAILED(result))
-	{
-	    return;
-	}
+	const HRESULT result = SHGetPropertyStoreFromParsingName(file_path.c_str(), NULL, GPS_READWRITE, IID_PPV_ARGS(&raw_property_store));
+
+	return SUCCEEDED(result);
 }
 
 unsigned int MetadataReadWrite::GetRating() const
@@ -65,9 +65,8 @@ void MetadataReadWrite::SetRating(const unsigned int rating)
 	
 	if (FAILED(result))
 	{
-	    // cgaarden Log the error
-	    return;
-	}
+        throw std::runtime_error("Failed to set rating");
+    }
 }
 
 void MetadataReadWrite::RemoveRating()
@@ -98,9 +97,8 @@ void MetadataReadWrite::SetTags(const std::vector<std::wstring>& tags)
 	
 	if (FAILED(result))
 	{
-	    // cgaarden Log the error
-	    return;
-	}
+        throw std::runtime_error("Failed to set tags");
+    }
 }
 
 std::vector<std::wstring> MetadataReadWrite::GetTags() const
@@ -115,9 +113,44 @@ std::vector<std::wstring> MetadataReadWrite::GetTags() const
     PropVariantInit(&prop_value);
 
     HRESULT result = raw_property_store->GetValue(PKEY_Keywords, &prop_value);
-    if (SUCCEEDED(result) && prop_value.vt == (VT_VECTOR | VT_LPWSTR)) {
-        for (ULONG i = 0; i < prop_value.calpwstr.cElems; i++) {
+    if (SUCCEEDED(result) && prop_value.vt == (VT_VECTOR | VT_LPWSTR)) 
+	{
+        for (ULONG i = 0; i < prop_value.calpwstr.cElems; i++) 
+		{
             tags.push_back(prop_value.calpwstr.pElems[i]);
+        }
+    }
+    return tags;
+}
+
+std::vector<std::wstring> MetadataReadWrite::GetSortedTags() const
+{
+    std::vector<std::wstring> tags;
+    if (!raw_property_store)
+    {
+        return tags;
+    }
+
+    PROPVARIANT prop_value;
+    PropVariantInit(&prop_value);
+
+    HRESULT result = raw_property_store->GetValue(PKEY_Keywords, &prop_value);
+    if (SUCCEEDED(result) && prop_value.vt == (VT_VECTOR | VT_LPWSTR))
+    {
+        for (ULONG i = 0; i < prop_value.calpwstr.cElems; i++)
+        {
+            // Insert tag in alphabetical order, case-insensitive
+            auto ci_less = [](const std::wstring& a, const std::wstring& b) {
+                return std::lexicographical_compare(
+                    a.begin(), a.end(), b.begin(), b.end(), [](wchar_t ac, wchar_t bc) 
+					{
+                        return std::towlower(ac) < std::towlower(bc);
+                    });
+            };
+
+            const std::wstring& new_tag = prop_value.calpwstr.pElems[i];
+            auto iterator = std::lower_bound(tags.begin(), tags.end(), new_tag, ci_less);
+            tags.insert(iterator, new_tag);
         }
     }
     return tags;
@@ -145,6 +178,28 @@ void MetadataReadWrite::AppendTags(const std::vector<std::wstring>& tags)
     SetTags(all_tags);
 }
 
+void MetadataReadWrite::RemoveAllTags()
+{
+    if (!raw_property_store)
+    {
+        return;
+    }
+
+    PROPVARIANT prop_value;
+    PropVariantInit(&prop_value);
+
+    prop_value.vt = VT_VECTOR | VT_LPWSTR;
+    prop_value.calpwstr.cElems = 0;
+    prop_value.calpwstr.pElems = nullptr;
+
+    HRESULT result = raw_property_store->SetValue(PKEY_Keywords, prop_value);
+
+	if (FAILED(result))
+    {
+        throw std::runtime_error("Failed to remove all tags");
+    }
+}
+
 void MetadataReadWrite::WriteChanges()
 {
 	HRESULT result = S_FALSE;
@@ -156,12 +211,12 @@ void MetadataReadWrite::WriteChanges()
 
 	if (FAILED(result))
 	{
-		// cgaarden Log the error
+        throw std::runtime_error("Failed to commit changes to metadata.");
 		return;
 	}
 }
 
-void MetadataReadWrite::Close()
+void MetadataReadWrite::Close() noexcept
 {
 	if (raw_property_store)
 	{

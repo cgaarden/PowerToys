@@ -15,12 +15,13 @@ rate_context_sub_menu_collection::rate_context_sub_menu_collection(const ComPtr<
 
     // Add Rating items to context menu
     // ⭐ ☆ ★
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆"));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆☆"));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆☆☆"));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"★★★★"));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"☆☆☆☆☆"));
-    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, L"Remove rating"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, 1, L"☆"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, 2, L"☆☆"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, 3, L"☆☆☆"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, 4, L"☆☆☆☆"));
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, 5, L"☆☆☆☆☆"));
+    explorer_menu_item_commands.push_back(Make<rate_separator_context_menu_item>());
+    explorer_menu_item_commands.push_back(Make<rate_context_sub_menu_item>(site_of_folder, 0, L"Remove rating"));
 
     current_command = explorer_menu_item_commands.cbegin();
 }
