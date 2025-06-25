@@ -7,7 +7,7 @@ class MetadataHelper
 public:
     // Ratings related
     static unsigned int GetFileRating(const std::wstring& file_path);
-    static std::pair<bool, double> GetRatingUniformityAndAverageRating(const std::vector<std::wstring>& file_paths);
+    static std::pair<bool, unsigned int> GetRatingUniformityAndFirstRating(const std::vector<std::wstring>& file_paths);
     static void SetRatingForMultipleFiles(const std::vector<std::wstring>& file_paths, const unsigned int rating);
     static void RemoveRatingForMultipleFiles(const std::vector<std::wstring>& file_paths);
 

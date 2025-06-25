@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 
 #include "utilities.h"
 
@@ -25,5 +25,30 @@ namespace file_organizer::utilities
         icon_resource_path += constants::non_localizable::rate_menu_icon_light_resource_relative_path;
 
         return icon_resource_path;
+    }
+
+    void RefreshShellForMultipleFiles(const std::vector<std::wstring>& file_paths)
+    {
+        for (const auto& file_path : file_paths)
+        {
+            SHChangeNotify(SHCNE_UPDATEITEM, SHCNF_PATH | SHCNF_FLUSH, file_path.c_str(), NULL);
+        }
+    }
+    std::wstring get_solid_rate_as_string(const unsigned int rate)
+    {
+        switch (rate)
+        {
+            case 5:
+                return L"★★★★★";
+            case 4:
+                return L"★★★★";
+            case 3:
+                return L"★★★";
+            case 2:
+                return L"★★";
+            case 1:
+                return L"★";
+        }
+        return std::wstring();
     }
 }

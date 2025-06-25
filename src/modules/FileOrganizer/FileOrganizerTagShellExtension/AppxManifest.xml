@@ -35,19 +35,16 @@
 			<Extensions>
 				<desktop4:Extension Category="windows.fileExplorerContextMenus">
 					<desktop4:FileExplorerContextMenus>
-                  <desktop5:ItemType Type="Directory">
-                     <desktop5:Verb Id="TagCommand" Clsid="A2877438-9A16-4629-912A-1223B4E3B025" />
-                  </desktop5:ItemType>
-                  <desktop5:ItemType Type="*">
-                     <desktop5:Verb Id="TagCommand" Clsid="A2877438-9A16-4629-912A-1223B4E3B025" />
-                  </desktop5:ItemType>
-               </desktop4:FileExplorerContextMenus>
-            </desktop4:Extension>
+						<desktop5:ItemType Type="*">
+							<desktop5:Verb Id="TagCommand" Clsid="A2877438-9A16-4629-912A-1223B4E3B025" />
+						</desktop5:ItemType>
+		           </desktop4:FileExplorerContextMenus>
+	            </desktop4:Extension>
 				<com:Extension Category="windows.comServer" uap10:RuntimeBehavior="packagedClassicApp">
 					<com:ComServer>
-                  <com:SurrogateServer DisplayName="Tag context menu verb handler">
-                     <com:Class Id="A2877438-9A16-4629-912A-1223B4E3B025"	Path="PowerToys.FileOrganizer.Tag.ShellExtension.dll" ThreadingModel="STA"/>
-                  </com:SurrogateServer>
+						<com:SurrogateServer DisplayName="Tag context menu verb handler">
+							<com:Class Id="A2877438-9A16-4629-912A-1223B4E3B025"	Path="PowerToys.FileOrganizer.Tag.ShellExtension.dll" ThreadingModel="STA"/>
+						</com:SurrogateServer>
 					</com:ComServer>
 				</com:Extension>
 			</Extensions>

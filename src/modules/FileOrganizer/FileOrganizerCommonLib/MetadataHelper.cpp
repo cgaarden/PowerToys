@@ -2,6 +2,7 @@
 #include "MetadataHelper.h"
 #include "Metadata.h"
 #include <common/logger/logger.h>
+#include <ShlObj.h>
 
 unsigned int MetadataHelper::GetFileRating(const std::wstring& file_path) 
 {
@@ -14,10 +15,9 @@ unsigned int MetadataHelper::GetFileRating(const std::wstring& file_path)
     return rating;
 }
 
-std::pair<bool, double> MetadataHelper::GetRatingUniformityAndAverageRating(const std::vector<std::wstring>& file_paths)
+std::pair<bool, unsigned int> MetadataHelper::GetRatingUniformityAndFirstRating(const std::vector<std::wstring>& file_paths)
 {
     size_t count = 0;
-    double sum = 0.0;
     bool all_same = true;
     unsigned int first_rating = 0;
     bool first = true;
@@ -39,7 +39,6 @@ std::pair<bool, double> MetadataHelper::GetRatingUniformityAndAverageRating(cons
                 {
                     all_same = false;
                 }
-                sum += rating;
                 ++count;
             }
 
@@ -56,8 +55,7 @@ std::pair<bool, double> MetadataHelper::GetRatingUniformityAndAverageRating(cons
         }
     }
 
-    const double average_rating = (count > 0) ? (sum / count) : 0.0;
-    return { all_same, average_rating };
+    return { all_same, first_rating };
 }
 
 void MetadataHelper::SetRatingForMultipleFiles(const std::vector<std::wstring>& file_paths, const unsigned int rating)

@@ -10,7 +10,7 @@ public:
     rate_context_sub_menu_item(const ComPtr<IUnknown> site_of_folder, unsigned int rate, std::wstring title, EXPCMDSTATE menu_item_state = ECS_ENABLED);
 
     // IExplorerCommand
-    IFACEMETHODIMP GetTitle(_In_opt_ IShellItemArray* items, _Outptr_result_nullonfailure_ PWSTR* returned_title);
+    IFACEMETHODIMP GetTitle(_In_opt_ IShellItemArray* selection, _Outptr_result_nullonfailure_ PWSTR* returned_title);
 
     IFACEMETHODIMP GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon);
 
