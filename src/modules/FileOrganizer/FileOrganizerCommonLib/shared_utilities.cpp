@@ -13,6 +13,37 @@ namespace file_organizer::shared_utilities
         }
     }
 
+    std::vector<std::wstring> GetFilePathsFromShellItemArray(IShellItemArray* selection)
+    {
+        std::vector<std::wstring> file_paths;
+        if (!selection)
+        {
+            return file_paths;
+        }
+
+        DWORD item_count = 0;
+        if (FAILED(selection->GetCount(&item_count)))
+        {
+            return file_paths;
+        }
+
+        for (DWORD i = 0; i < item_count; i++)
+        {
+            CComPtr<IShellItem> shell_item;
+            if (SUCCEEDED(selection->GetItemAt(i, &shell_item)))
+            {
+                PWSTR file_path = nullptr;
+                if (SUCCEEDED(shell_item->GetDisplayName(SIGDN_FILESYSPATH, &file_path)))
+                {
+                    file_paths.push_back(file_path);
+                    CoTaskMemFree(file_path);
+                }
+            }
+        }
+        return file_paths;
+    }
+
+
     // cgaarden
     //void register_msix_package()
     //{

@@ -31,22 +31,7 @@ IFACEMETHODIMP rate_context_sub_menu_item::GetTitle(_In_opt_ IShellItemArray* se
             return SHStrDup(title.c_str(), returned_title);
         }
 
-        std::vector<std::wstring> file_paths;
-
-        // For each selected shell item, get their file paths
-        for (DWORD i = 0; i < item_count; i++)
-        {
-            CComPtr<IShellItem> shell_item;
-            if (SUCCEEDED(selection->GetItemAt(i, &shell_item)))
-            {
-                PWSTR file_path = nullptr;
-                if (SUCCEEDED(shell_item->GetDisplayName(SIGDN_FILESYSPATH, &file_path)))
-                {
-                    file_paths.push_back(file_path);
-                    CoTaskMemFree(file_path);
-                }
-            }
-        }
+        const auto file_paths = file_organizer::shared_utilities::GetFilePathsFromShellItemArray(selection);
 
         // Get the rating for all selected files
         const std::pair<bool, unsigned int> rating_result = MetadataHelper::GetRatingUniformityAndFirstRating(file_paths);

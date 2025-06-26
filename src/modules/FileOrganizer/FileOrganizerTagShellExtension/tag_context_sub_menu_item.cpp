@@ -57,22 +57,7 @@ IFACEMETHODIMP tag_context_sub_menu_item::Invoke(_In_opt_ IShellItemArray* selec
     selection->GetCount(&item_count);
     try
     {
-        std::vector<std::wstring> file_paths;
-
-        // For each selected shell item, get their file paths
-        for (DWORD i = 0; i < item_count; i++)
-        {
-            CComPtr<IShellItem> shell_item;
-            if (SUCCEEDED(selection->GetItemAt(i, &shell_item)))
-            {
-                PWSTR file_path = nullptr;
-                if (SUCCEEDED(shell_item->GetDisplayName(SIGDN_FILESYSPATH, &file_path)))
-                {
-                    file_paths.push_back(file_path);
-                    CoTaskMemFree(file_path);
-                }
-            }
-        }
+        const auto file_paths = file_organizer::shared_utilities::GetFilePathsFromShellItemArray(selection);
 
         // Append tag for all selected files
         MetadataHelper::AppendTagsForMultipleFiles(file_paths, { this->title });
