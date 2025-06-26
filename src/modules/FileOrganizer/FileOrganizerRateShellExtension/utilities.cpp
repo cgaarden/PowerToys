@@ -27,13 +27,6 @@ namespace file_organizer::utilities
         return icon_resource_path;
     }
 
-    void RefreshShellForMultipleFiles(const std::vector<std::wstring>& file_paths)
-    {
-        for (const auto& file_path : file_paths)
-        {
-            SHChangeNotify(SHCNE_UPDATEITEM, SHCNF_PATH | SHCNF_FLUSH, file_path.c_str(), NULL);
-        }
-    }
     std::wstring get_solid_rate_as_string(const unsigned int rate)
     {
         switch (rate)

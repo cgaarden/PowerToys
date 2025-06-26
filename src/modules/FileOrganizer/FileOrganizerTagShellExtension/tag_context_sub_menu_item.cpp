@@ -4,6 +4,8 @@
 #include "trace.h"
 #include "Generated Files/resource.h"
 #include "utilities.h"
+#include <FileOrganizer/FileOrganizerCommonLib/MetadataHelper.h>
+#include <FileOrganizer/FileOrganizerCommonLib/shared_utilities.h>
 
 using namespace Microsoft::WRL;
 
@@ -49,10 +51,47 @@ IFACEMETHODIMP tag_context_sub_menu_item::GetState(_In_opt_ IShellItemArray* sel
     return S_OK;
 }
 
-IFACEMETHODIMP tag_context_sub_menu_item::Invoke(_In_opt_ IShellItemArray*, _In_opt_ IBindCtx*) noexcept
+IFACEMETHODIMP tag_context_sub_menu_item::Invoke(_In_opt_ IShellItemArray* selection, _In_opt_ IBindCtx*) noexcept
 {
-    return E_NOTIMPL;
-    //return newplus::utilities::copy_template(template_entry, site_of_folder);
+    DWORD item_count = 0;
+    selection->GetCount(&item_count);
+    try
+    {
+        std::vector<std::wstring> file_paths;
+
+        // For each selected shell item, get their file paths
+        for (DWORD i = 0; i < item_count; i++)
+        {
+            CComPtr<IShellItem> shell_item;
+            if (SUCCEEDED(selection->GetItemAt(i, &shell_item)))
+            {
+                PWSTR file_path = nullptr;
+                if (SUCCEEDED(shell_item->GetDisplayName(SIGDN_FILESYSPATH, &file_path)))
+                {
+                    file_paths.push_back(file_path);
+                    CoTaskMemFree(file_path);
+                }
+            }
+        }
+
+        // Append tag for all selected files
+        MetadataHelper::AppendTagsForMultipleFiles(file_paths, { this->title });
+
+        // Refresh the file explorer shell to reflect the changes
+        file_organizer::shared_utilities::RefreshShellForMultipleFiles(file_paths);
+    }
+    catch (std::exception& e)
+    {
+        Logger::error("Failed to set rating for files: {}", std::string{ e.what() });
+        return E_FAIL;
+    }
+    catch (...)
+    {
+        Logger::error("Failed to set rating for selected files...");
+        return E_FAIL;
+    }
+
+    return S_OK;
 }
 
 IFACEMETHODIMP tag_context_sub_menu_item::GetFlags(_Out_ EXPCMDFLAGS* returned_flags)

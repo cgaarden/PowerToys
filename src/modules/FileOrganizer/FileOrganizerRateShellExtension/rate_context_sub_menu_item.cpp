@@ -4,6 +4,7 @@
 #include "Generated Files/resource.h"  
 #include "utilities.h"  
 #include "..\FileOrganizerCommonLib\MetadataHelper.h"
+#include <FileOrganizer/FileOrganizerCommonLib/shared_utilities.h>
 
 using namespace Microsoft::WRL;  
 
@@ -122,7 +123,7 @@ IFACEMETHODIMP rate_context_sub_menu_item::Invoke(_In_opt_ IShellItemArray* sele
         MetadataHelper::SetRatingForMultipleFiles(file_paths, rate);
 
         // Refresh the file explorer shell to reflect the changes
-        file_organizer::utilities::RefreshShellForMultipleFiles(file_paths);
+        file_organizer::shared_utilities::RefreshShellForMultipleFiles(file_paths);
     }
     catch (std::exception& e)
     {

@@ -8,6 +8,5 @@ namespace file_organizer::utilities
 {
     void register_msix_package();
     std::wstring get_rate_icon_resource_filepath(const HMODULE module_instance_handle, const Theme theme);
-    void RefreshShellForMultipleFiles(const std::vector<std::wstring>& file_paths);
     std::wstring get_solid_rate_as_string(const unsigned int rate);
 }

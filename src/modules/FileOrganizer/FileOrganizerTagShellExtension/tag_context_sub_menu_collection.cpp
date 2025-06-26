@@ -17,14 +17,12 @@ tag_context_sub_menu_collection::tag_context_sub_menu_collection(const ComPtr<IU
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder, 
         L"Blue", 
-        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"1", file_organizer::utilities::tagged),
-        ECS_CHECKED));
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"1", file_organizer::utilities::tagged)));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
         L"Light blue",
-        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"2", file_organizer::utilities::tagged),
-        ECS_CHECKBOX));
+        file_organizer::utilities::get_tag_icon_number_resource_filepath(L"2", file_organizer::utilities::tagged)));
 
     explorer_menu_item_commands.push_back(Make<tag_context_sub_menu_item>(
         site_of_folder,
