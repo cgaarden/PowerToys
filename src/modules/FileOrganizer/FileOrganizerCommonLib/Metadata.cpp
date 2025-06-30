@@ -6,6 +6,9 @@
 #include <propkey.h>
 #include <ShlObj.h>
 #include <stdexcept>
+#include <chrono>
+#include <thread>
+
 
 MetadataReadWrite::~MetadataReadWrite()
 {
@@ -61,7 +64,7 @@ void MetadataReadWrite::SetRating(const unsigned int rating)
 	    break;
 	}
 
-	HRESULT result = raw_property_store->SetValue(PKEY_Rating, prop_value);
+	HRESULT result = SetPropertyValueWithRetries(PKEY_Rating, prop_value);
 	
 	if (FAILED(result))
 	{
@@ -76,7 +79,7 @@ void MetadataReadWrite::RemoveRating()
 
 void MetadataReadWrite::SetTags(const std::vector<std::wstring>& tags)
 {
-	HRESULT result = S_FALSE;
+	HRESULT result = E_FAIL;
 
 	PROPVARIANT prop_value;
 	PropVariantInit(&prop_value);
@@ -93,7 +96,8 @@ void MetadataReadWrite::SetTags(const std::vector<std::wstring>& tags)
 	        wcscpy_s(prop_value.calpwstr.pElems[i], tags[i].size() + 1, tags[i].c_str());
 	    }
 	}
-	result = raw_property_store->SetValue(PKEY_Keywords, prop_value);
+
+	result = SetPropertyValueWithRetries(PKEY_Keywords, prop_value);
 	
 	if (FAILED(result))
 	{
@@ -104,10 +108,6 @@ void MetadataReadWrite::SetTags(const std::vector<std::wstring>& tags)
 std::vector<std::wstring> MetadataReadWrite::GetTags() const
 {
     std::vector<std::wstring> tags;
-	if (!raw_property_store) 
-	{
-		return tags;
-	}
 
     PROPVARIANT prop_value;
     PropVariantInit(&prop_value);
@@ -126,10 +126,6 @@ std::vector<std::wstring> MetadataReadWrite::GetTags() const
 std::vector<std::wstring> MetadataReadWrite::GetSortedTags() const
 {
     std::vector<std::wstring> tags;
-    if (!raw_property_store)
-    {
-        return tags;
-    }
 
     PROPVARIANT prop_value;
     PropVariantInit(&prop_value);
@@ -158,11 +154,6 @@ std::vector<std::wstring> MetadataReadWrite::GetSortedTags() const
 
 void MetadataReadWrite::AppendTags(const std::vector<std::wstring>& tags)
 {
-    if (!raw_property_store) 
-	{
-		return;
-	}
-
     std::vector<std::wstring> all_tags = GetTags();
 
     // Append new tags, avoiding duplicates
@@ -180,11 +171,6 @@ void MetadataReadWrite::AppendTags(const std::vector<std::wstring>& tags)
 
 void MetadataReadWrite::RemoveAllTags()
 {
-    if (!raw_property_store)
-    {
-        return;
-    }
-
     PROPVARIANT prop_value;
     PropVariantInit(&prop_value);
 
@@ -192,7 +178,7 @@ void MetadataReadWrite::RemoveAllTags()
     prop_value.calpwstr.cElems = 0;
     prop_value.calpwstr.pElems = nullptr;
 
-    HRESULT result = raw_property_store->SetValue(PKEY_Keywords, prop_value);
+    HRESULT result = SetPropertyValueWithRetries(PKEY_Keywords, prop_value);
 
 	if (FAILED(result))
     {
@@ -200,19 +186,67 @@ void MetadataReadWrite::RemoveAllTags()
     }
 }
 
+void MetadataReadWrite::RemoveSpecifiedTags(const std::vector<std::wstring>& tags_to_remove)
+{
+    std::vector<std::wstring> all_tags = GetTags();
+
+    // Remove tags
+    for (const auto& tag : tags_to_remove)
+    {
+        auto iterator = std::find(all_tags.begin(), all_tags.end(), tag);
+
+        if (iterator != std::end(all_tags))
+        {
+            all_tags.erase(iterator);
+        }
+    }
+
+    // Set the combined tags
+    SetTags(all_tags);
+}
+
+HRESULT MetadataReadWrite::SetPropertyValueWithRetries(REFPROPERTYKEY prop_key, REFPROPVARIANT prop_value)
+{
+    HRESULT result = E_FAIL;
+
+    int number_of_retries = 0;
+
+	// cgaarden UPDATE this to only retry on the correct set of failures
+    while (number_of_retries < 3 && FAILED(result))
+    {
+        result = raw_property_store->SetValue(prop_key, prop_value);
+
+        if (FAILED(result))
+        {
+            const std::chrono::milliseconds wait_a_bit{ 50 };
+            std::this_thread::sleep_for(std::chrono::milliseconds(wait_a_bit));
+        }
+    }
+
+	return result;
+}
+
 void MetadataReadWrite::WriteChanges()
 {
-	HRESULT result = S_FALSE;
+    HRESULT result = E_FAIL;
 
-	if (raw_property_store)
-	{
-		result = raw_property_store->Commit();
-	}
+    int number_of_retries = 0;
+
+    // cgaarden UPDATE this to only retry on the correct set of failures
+    while (number_of_retries < 3 && FAILED(result))
+    {
+        result = raw_property_store->Commit();
+
+        if (FAILED(result))
+        {
+            const std::chrono::milliseconds wait_a_bit{ 50 };
+            std::this_thread::sleep_for(std::chrono::milliseconds(wait_a_bit));
+        }
+    }
 
 	if (FAILED(result))
 	{
         throw std::runtime_error("Failed to commit changes to metadata.");
-		return;
 	}
 }
 

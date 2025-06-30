@@ -3,6 +3,7 @@
 #include "Metadata.h"
 #include <common/logger/logger.h>
 #include <ShlObj.h>
+#include "shared_utilities.h"
 
 unsigned int MetadataHelper::GetFileRating(const std::wstring& file_path) 
 {
@@ -102,6 +103,7 @@ void MetadataHelper::RemoveRatingForMultipleFiles(const std::vector<std::wstring
 
 std::pair<bool, std::vector<std::wstring>> MetadataHelper::GetTagsUniformityAndTagsFromFirstFile(const std::vector<std::wstring>& file_paths)
 {
+    // cgaarden REMOVE THIS method
     bool all_same = true;
     std::vector<std::wstring> first_tags;
     bool first = true;
@@ -154,6 +156,7 @@ void MetadataHelper::AppendTagsForMultipleFiles(const std::vector<std::wstring>&
                 metadata.AppendTags(tags_to_append);
                 metadata.WriteChanges();
                 metadata.Close();
+                // file_organizer::shared_utilities::RefreshShellForMultipleFiles({ file_path });
             }
         }
         catch (...)
@@ -175,11 +178,84 @@ void MetadataHelper::RemoveAllTagsForMultipleFiles(const std::vector<std::wstrin
                 metadata.RemoveAllTags();
                 metadata.WriteChanges();
                 metadata.Close();
+                // file_organizer::shared_utilities::RefreshShellForMultipleFiles({ file_path });
             }
+        }
+        catch (std::exception& e)
+        {
+            throw std::runtime_error(std::format("Error while removing all tags from file: {}", std::string{ e.what() }));
         }
         catch (...)
         {
             throw std::runtime_error("Error while removing all tags from file");
+        }
+    }
+}
+
+std::vector<std::wstring> MetadataHelper::GetSharedTagsForMultipleFiles(const std::vector<std::wstring>& file_paths)
+{
+    std::vector<std::wstring> shared_tags;
+    bool first = true;
+
+    for (const auto& file_path : file_paths)
+    {
+        try
+        {
+            if (file_paths.size() >= 50)
+            {
+                // More than 50 files, assume they are all different
+                break;
+            }
+
+            MetadataReadWrite metadata;
+            if (metadata.Open(file_path))
+            {
+                const std::vector<std::wstring>& tags = metadata.GetSortedTags();
+                if (first)
+                {
+                    shared_tags = tags;
+                    first = false;
+                    continue;
+                }
+
+                for (auto shared_tags_it = shared_tags.begin(); shared_tags_it != std::end(shared_tags); shared_tags_it++)
+                {
+                    auto current_tags_it = std::find(tags.begin(), tags.end(), *shared_tags_it);
+
+                    if (current_tags_it == std::end(tags))
+                    {
+                        shared_tags.erase(shared_tags_it);
+                        shared_tags_it = shared_tags.begin();
+                    }
+                }
+            }
+        }
+        catch (...)
+        {
+            throw std::runtime_error("Error while getting the tags for file");
+        }
+    }
+
+    return shared_tags;
+}
+
+void MetadataHelper::RemoveSpecificTagsForMultipleFiles(const std::vector<std::wstring>& file_paths, const std::vector<std::wstring>& tags_to_remove)
+{
+    for (const auto& file_path : file_paths)
+    {
+        try
+        {
+            MetadataReadWrite metadata;
+            if (metadata.Open(file_path))
+            {
+                metadata.RemoveSpecifiedTags(tags_to_remove);
+                metadata.WriteChanges();
+                metadata.Close();
+            }
+        }
+        catch (...)
+        {
+            throw std::runtime_error("Error while removing specified tags from file");
         }
     }
 }

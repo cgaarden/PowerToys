@@ -30,8 +30,10 @@ public:
     void SetTags(const std::vector<std::wstring>& tags);
 	void AppendTags(const std::vector<std::wstring>& tags);
     void RemoveAllTags();
+    void RemoveSpecifiedTags(const std::vector<std::wstring>& tags_to_remove);
 
 protected:
 	IPropertyStore* raw_property_store; // Ensure IPropertyStore is defined
+    HRESULT SetPropertyValueWithRetries(REFPROPERTYKEY prop_key, REFPROPVARIANT prop_value);
 };
 

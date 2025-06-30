@@ -15,4 +15,6 @@ public:
     static std::pair<bool, std::vector<std::wstring>> GetTagsUniformityAndTagsFromFirstFile(const std::vector<std::wstring>& file_paths);
     static void AppendTagsForMultipleFiles(const std::vector<std::wstring>& file_paths, const std::vector<std::wstring>& tags_to_append);
     static void RemoveAllTagsForMultipleFiles(const std::vector<std::wstring>& file_paths);
+    static std::vector<std::wstring> GetSharedTagsForMultipleFiles(const std::vector<std::wstring>& file_paths);
+    static void RemoveSpecificTagsForMultipleFiles(const std::vector<std::wstring>& file_paths, const std::vector<std::wstring>& tags_to_remove);
 };

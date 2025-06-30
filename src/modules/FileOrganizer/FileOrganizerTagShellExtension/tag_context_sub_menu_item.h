@@ -68,6 +68,10 @@ public:
     IFACEMETHODIMP GetIcon(_In_opt_ IShellItemArray*, _Outptr_result_nullonfailure_ PWSTR* returned_icon);
 
     IFACEMETHODIMP Invoke(_In_opt_ IShellItemArray* selection, _In_opt_ IBindCtx*) noexcept;
+
+protected:
+    void RemoveAllTags(const std::vector<std::wstring>& file_paths) const;
+    static void RemoveAllTagsOnOtherThread(const std::vector<std::wstring>& file_paths);
 };
 
 // Sub-context-menu - The "Manage tags" menu-item
