@@ -8,7 +8,7 @@ namespace Microsoft.CmdPal.UI.ViewModels;
 
 public partial class CommandPaletteContentPageViewModel : ContentPageViewModel
 {
-    public CommandPaletteContentPageViewModel(IContentPage model, TaskScheduler scheduler, AppExtensionHost host, CommandProviderContext providerContext)
+    public CommandPaletteContentPageViewModel(IContentPage model, TaskScheduler scheduler, AppExtensionHost host, ICommandProviderContext providerContext)
         : base(model, scheduler, host, providerContext)
     {
     }
@@ -20,6 +20,8 @@ public partial class CommandPaletteContentPageViewModel : ContentPageViewModel
             IFormContent form => new ContentFormViewModel(form, context),
             IMarkdownContent markdown => new ContentMarkdownViewModel(markdown, context),
             ITreeContent tree => new ContentTreeViewModel(tree, context),
+            IPlainTextContent plainText => new ContentPlainTextViewModel(plainText, context),
+            IImageContent image => new ContentImageViewModel(image, context),
             _ => null,
         };
         return viewModel;

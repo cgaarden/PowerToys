@@ -47,7 +47,20 @@ public partial class ContextMenuViewModel : ObservableObject,
     public ContextMenuViewModel(IFuzzyMatcherProvider fuzzyMatcherProvider)
     {
         _fuzzyMatcherProvider = fuzzyMatcherProvider;
-        WeakReferenceMessenger.Default.Register<UpdateCommandBarMessage>(this);
+    }
+
+    public void HookCommandBar()
+    {
+        var messenger = WeakReferenceMessenger.Default;
+        if (!messenger.IsRegistered<UpdateCommandBarMessage>(this))
+        {
+            messenger.Register<UpdateCommandBarMessage>(this);
+        }
+    }
+
+    public void UnhookCommandBar()
+    {
+        WeakReferenceMessenger.Default.Unregister<UpdateCommandBarMessage>(this);
     }
 
     public void Receive(UpdateCommandBarMessage message)
@@ -59,11 +72,8 @@ public partial class ContextMenuViewModel : ObservableObject,
     {
         if (SelectedItem is not null)
         {
-            if (SelectedItem.PrimaryCommand is not null || SelectedItem.HasMoreCommands)
-            {
-                ContextMenuStack.Clear();
-                PushContextStack(SelectedItem.AllCommands);
-            }
+            ContextMenuStack.Clear();
+            PushContextStack(SelectedItem.AllCommands);
         }
     }
 
